@@ -35,10 +35,6 @@ export const router = createBrowserRouter([
                 element: <ExploreGardeners></ExploreGardeners>
             },
             {
-                path: '/browsetips',
-                element: <BrowseTips></BrowseTips>
-            },
-            {
                 path: '/sharetips',
                 element: <ShareTips></ShareTips>
             },

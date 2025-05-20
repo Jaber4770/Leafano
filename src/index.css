@@ -1,2 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Poetsen+One&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
+
+.font-poetsen{
+    font-family: "Poetsen One", sans-serif;
+}
+body{
+    font-family: "Inder", sans-serif;
+}
