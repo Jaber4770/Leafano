@@ -8,6 +8,7 @@ import MyTips from "./pages/MyTips";
 import ShareTips from "./pages/ShareTips";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Loader from "./components/Loader";
 
 export const router = createBrowserRouter([
     {
@@ -18,33 +19,41 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 index: true,
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:3000/users'),
+                hydrateFallbackElement:<Loader></Loader>
             },
             {
                 path: '/browsetips',
-                element: <BrowseTips></BrowseTips>
+                element: <BrowseTips></BrowseTips>,
+                // HydrateFallback: <Loader />
 
             },
             {
                 path: '/mytips',
-                element: <MyTips></MyTips>
+                element: <MyTips></MyTips>,
+                // HydrateFallback: <Loader />
             },
             {
 
                 path: '/exploregardeners',
-                element: <ExploreGardeners></ExploreGardeners>
+                element: <ExploreGardeners></ExploreGardeners>,
+                // HydrateFallback: <Loader />
             },
             {
                 path: '/sharetips',
-                element: <ShareTips></ShareTips>
+                element: <ShareTips></ShareTips>,
+                // HydrateFallback: <Loader />
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <Login></Login>,
+                // HydrateFallback: <Loader />
             },
             {
                 path: '/signup',
-                element: <SignUp></SignUp>
+                element: <SignUp></SignUp>,
+                // HydrateFallback: <Loader />
             }
         ]
     },

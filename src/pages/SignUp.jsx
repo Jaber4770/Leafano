@@ -18,6 +18,37 @@ const SignUp = () => {
                     <h1 className="text-5xl font-bold text-center py-3 px-2">
                         SignUp now!</h1>
                     <form onSubmit={handleSignIn} className="fieldset">
+                        <label className="label">Name</label>
+                        <div>
+                            <label className="input validator">
+                                <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <g
+                                        strokeLinejoin="round"
+                                        strokeLinecap="round"
+                                        strokeWidth="2.5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                    >
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </g>
+                                </svg>
+                                <input
+                                    type="text"
+                                    name='name'
+                                    required
+                                    placeholder="Username"
+                                    pattern="[A-Za-z][A-Za-z0-9\-]*"
+                                    minlength="3"
+                                    maxlength="30"
+                                    title="Only letters, numbers or dash"
+                                />
+                            </label>
+                            <p className="validator-hint hidden">
+                                Must be 3 to 30 characters
+                                <br />containing only letters, numbers or dash
+                            </p>
+                       </div>
                         <label className="label">Email</label>
                         {/* email */}
                         <div>
@@ -70,6 +101,33 @@ const SignUp = () => {
                                 Must be more than 8 characters, including
                                 <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
                             </p>
+                        </div>
+                        <div>
+                            <label className="label">Photo URL</label>
+                            <label className="input validator">
+                                <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <g
+                                        strokeLinejoin="round"
+                                        strokeLinecap="round"
+                                        strokeWidth="2.5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                    >
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                    </g>
+                                </svg>
+                                <input
+                                    type="url"
+                                    name='photourl'
+                                    required
+                                    placeholder="https://"
+                                    value="https://"
+                                    pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
+                                    title="Must be valid URL"
+                                />
+                            </label>
+                            <p className="validator-hint hidden">Must be valid URL</p>
                         </div>
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button type='submit' className="btn btn-neutral mt-4">SignUp</button>
