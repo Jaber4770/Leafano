@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../Contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    
+
+    const { createUser } = use(AuthContext);
+
     const handleSignIn = e => {
         e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const { email, password, ...userProfile } = Object.fromEntries(formData.entries());
+        userProfile.email = email;
+        form.reset();
 
+        createUser(email, password)
+            .then(userCredential => {
+                console.log(userCredential.user);
+                if (userCredential.user) {
+                    fetch('http://localhost:3000/gardeners', {
+                        method: "POST",
+                        headers: { 'content-type': "application/json" },
+                        body: JSON.stringify(userProfile)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Account created successfully!",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  });
+                           }
+                        })
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 
@@ -37,8 +73,7 @@ const SignUp = () => {
                                     type="text"
                                     name='name'
                                     required
-                                    placeholder="Username"
-                                    pattern="[A-Za-z][A-Za-z0-9\-]*"
+                                    placeholder="Name"
                                     minlength="3"
                                     maxlength="30"
                                     title="Only letters, numbers or dash"
@@ -48,7 +83,7 @@ const SignUp = () => {
                                 Must be 3 to 30 characters
                                 <br />containing only letters, numbers or dash
                             </p>
-                       </div>
+                        </div>
                         <label className="label">Email</label>
                         {/* email */}
                         <div>
@@ -122,7 +157,6 @@ const SignUp = () => {
                                     name='photourl'
                                     required
                                     placeholder="https://"
-                                    value="https://"
                                     pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
                                     title="Must be valid URL"
                                 />

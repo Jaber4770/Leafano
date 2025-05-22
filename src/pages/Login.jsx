@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../Contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+
+    const { loginUser } = use(AuthContext);
+
+
 
     const handleLogin = e => {
         e.preventDefault();
@@ -9,8 +15,30 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-    }
 
+        loginUser(email, password)
+            .then(userCredential => {
+                console.log(userCredential.user);
+                if (userCredential.user) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Login complete!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .then(error => {
+                console.log(error);
+            })
+
+
+
+
+
+        form.reset();
+    }
 
 
 

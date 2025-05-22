@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Gardener from '../components/Gardener';
 
 const ExploreGardeners = () => {
 
+    const [garderners, setGarderners] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/gardeners')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setGarderners(data);
+            })
+    }, [])
+
+
+
+
     return (
-        <div>
-            <h1>explore gardenars</h1>
+        <div className='container mx-auto'>
+            <div className='text-center my-10'>
+                <h1 className='text-5xl font-bold pb-3 bg-gradient-to-r from-black to-green-500 bg-clip-text text-transparent'>Explore Gardenars</h1>
+                <p className='italic'>Discover passionate gardeners from our community—connect, learn, and grow together. 🌿</p>
+            </div>
+            <div className='grid grid-cols-3 gap-5 mb-10'>
+                {
+                    garderners.map(gardener => <Gardener
+                        key={gardener._id}
+                        gardener={gardener}></Gardener>)
+                }
+            </div>
         </div>
     );
 };
