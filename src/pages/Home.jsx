@@ -3,6 +3,7 @@ import Slider from '../components/Slider';
 import FeaturedGardeners from '../components/FeaturedGardeners';
 import { useLoaderData } from 'react-router';
 import TrendingTips from '../components/TrendingTips';
+import GardeningHelp from '../components/GardeningHelp';
 
 const Home = () => {
     const [tips, setTips] = useState([]);
@@ -21,6 +22,7 @@ const Home = () => {
             <Slider></Slider>
             <FeaturedGardeners initialGardenersData={initialGardenersData}></FeaturedGardeners>
             <TrendingTips tips={tips}></TrendingTips>
+            <GardeningHelp></GardeningHelp>
         </div>
     );
 };
