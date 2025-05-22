@@ -27,7 +27,7 @@ const Gardener = ({ gardener }) => {
                     <p>Email: {email}</p>
                 </div>
                 <div className="card-actions">
-                    <Link to={`/gardenerDetails/${_id}`} className="btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white w-full">Details</Link>
+                    <Link to={`/gardenerDetails/${_id}`} className="btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white w-full">View Profile</Link>
                 </div>
             </div>
         </div>

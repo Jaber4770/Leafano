@@ -28,9 +28,9 @@ const FeaturedUserCard = ({ initData }) => {
                         <p>Status: {status}</p>
                         <p></p>
                     </div>
-                    <div className="card-actions">
-                        <button className="btn btn-primary w-full">Details</button>
-                    </div>
+                    {/* <div className="card-actions">
+                    { <button className="btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white w-full">Details</button> }
+                    </div> */}
                 </div>
             </div>
     );
