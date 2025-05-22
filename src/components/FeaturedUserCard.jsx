@@ -3,8 +3,7 @@ import React from 'react';
 const FeaturedUserCard = ({ initData }) => {
     const { name, profilePhoto, coverPhoto, bio, location, status } = initData;
     return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm h-full">
+            <div className="card bg-base-100 shadow-sm h-full">
                 <div className='relative'>
                     <figure>
                         <img
@@ -34,7 +33,6 @@ const FeaturedUserCard = ({ initData }) => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
