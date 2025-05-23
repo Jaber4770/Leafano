@@ -37,15 +37,11 @@ const SignUp = () => {
                            }
                         })
                 }
-
             })
             .catch(error => {
                 console.log(error);
             })
     }
-
-
-
 
     return (
         <div className='flex justify-center items-center my-20'>

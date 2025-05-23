@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const BrowseTipsCard = ({ tip }) => {
-    const { title, name, privacy, photo,_id } = tip;
+    const { title, name, privacy, photo, _id, category } = tip;
     return (
         <div>
             <div className='border-2 border-green-500 ps-2 rounded-sm'>
@@ -12,6 +12,7 @@ const BrowseTipsCard = ({ tip }) => {
                 </div>
                 <div className='flex gap-5 my-2'>
                     <p className='px-2 py-1 bg-gray-300 rounded-full'>{privacy}</p>
+                    <p className='px-2 py-1 bg-gray-300 rounded-full'>{category}</p>
                 </div>
                 <div className='pb-2'>
                     <img className='w-[60%] mx-auto my-2 rounded-sm' src={photo} alt="" />

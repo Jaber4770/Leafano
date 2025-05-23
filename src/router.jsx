@@ -43,13 +43,11 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
-
                 path: '/exploregardeners',
                 element: <ExploreGardeners></ExploreGardeners>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
-
                 path: '/gardenerDetails/:id',
                 element: <GardenerDetails></GardenerDetails>,
                 hydrateFallbackElement: <Loader></Loader>

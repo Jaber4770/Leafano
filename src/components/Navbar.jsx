@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import "./Navbar.css";
+import { AuthContext } from '../Contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+
+    const { signOutUser } = use(AuthContext);
 
     const links = <>
         <li className='pe-2'><NavLink to='/'>Home</NavLink></li>
@@ -11,6 +15,25 @@ const Navbar = () => {
         <li className='pe-2'><NavLink to='/exploregardeners'>Explore Gargeners</NavLink></li>
         <li className='pe-2'><NavLink to='/sharetips'>Share Tips</NavLink></li>
     </>
+
+    const handleLogOut = () => {
+        signOutUser()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logout successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .then(error => {
+                alert(error);
+            })
+    }
+
+
+
 
     return (
         <div className='bg-base-100 shadow-sm sticky top-0 z-50'>
@@ -56,7 +79,7 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="dropdown-content mt-3 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                 <li><span>User Name</span></li>
-                                <Link to='/login' className="btn">Logout</Link>
+                                <button onClick={handleLogOut} to='/login' className="btn">Logout</button>
                             </ul>
                         </div>
                     </div>
