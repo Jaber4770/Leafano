@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <div className="relative border-t-2 border-base-300 overflow-hidden">
             {/* Background Image Layer */}
-            <div className='absolute inset-0 bg-[url("https://i.ibb.co/f5hK11X/486588-PH5-G5-D-847.jpg")] bg-contain bg-right bg-center bg-no-repeat opacity-20 z-0'></div>
+            <div className='absolute inset-0 bg-[url("https://i.ibb.co/f5hK11X/486588-PH5-G5-D-847.jpg")] bg-contain bg-right bg-no-repeat opacity-20 z-0'></div>
 
             {/* Footer Content */}
             <footer className="footer footer-horizontal footer-center text-base-content rounded p-10 container mx-auto relative z-10">
@@ -32,7 +32,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <address className="not-italic text-sm leading-relaxed">
-                        <strong>GreenRoots Gardening Co.</strong><br />
+                        <strong>Leafano.</strong><br />
                         123 Bloom Lane,<br />
                         Garden City, FL 32789,<br />
                         United States<br />

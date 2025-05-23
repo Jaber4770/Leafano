@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import Loader from "./components/Loader";
 import Terms from "./components/Terms";
 import GardenerDetails from "./components/GardenerDetails";
+import TipsDetails from "./components/TipsDetails";
 
 export const router = createBrowserRouter([
     {
@@ -28,13 +29,18 @@ export const router = createBrowserRouter([
             {
                 path: '/browsetips',
                 element: <BrowseTips></BrowseTips>,
-                // HydrateFallback: <Loader />
+                hydrateFallbackElement: <Loader></Loader>
 
+            },
+            {
+                path: 'tipsDetails/:id',
+                element: <TipsDetails></TipsDetails>,
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/mytips',
                 element: <MyTips></MyTips>,
-                // HydrateFallback: <Loader />
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
 
@@ -51,22 +57,22 @@ export const router = createBrowserRouter([
             {
                 path: '/sharetips',
                 element: <ShareTips></ShareTips>,
-                // HydrateFallback: <Loader />
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/login',
                 element: <Login></Login>,
-                // HydrateFallback: <Loader />
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/signup',
                 element: <SignUp></SignUp>,
-                // HydrateFallback: <Loader />
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/terms',
-                element: <Terms></Terms>
-                // HydrateFallback: <Loader />
+                element: <Terms></Terms>,
+                hydrateFallbackElement: <Loader></Loader>
             }
         ]
     },
