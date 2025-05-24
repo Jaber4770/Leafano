@@ -1,13 +1,13 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
 
 const Login = () => {
 
     const { loginUser, loginWithGooglePopUp } = use(AuthContext);
-
-
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -18,8 +18,11 @@ const Login = () => {
 
         loginUser(email, password)
             .then(userCredential => {
-                console.log(userCredential.user);
+                // console.log(userCredential.user);
                 if (userCredential.user) {
+
+                    navigate(`${location.state? location.state : '/'}`)
+
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -29,8 +32,8 @@ const Login = () => {
                     });
                 }
             })
-            .then(error => {
-                console.log(error);
+            .catch(error => {
+                alert(error.message);
             })
 
 

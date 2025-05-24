@@ -78,7 +78,10 @@ const Navbar = () => {
                                     </div>
                                     <ul tabIndex={0} className="dropdown-content mt-3 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                         <li><span>{user?.displayName}</span></li>
-                                        <button onClick={handleLogOut} to='/login' className="btn">Logout</button>
+                                        <div className='space-y-2'>
+                                            <Link to='/updateProfile' className="btn w-full">Update Profile</Link>
+                                            <button onClick={handleLogOut} to='/login' className="btn w-full">Logout</button>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>

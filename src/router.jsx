@@ -14,6 +14,7 @@ import GardenerDetails from "./components/GardenerDetails";
 import TipsDetails from "./components/TipsDetails";
 import MyTipsDetails from "./components/MyTipsDetails";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "./components/UpdateProfile";
 
 export const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Home></Home>,
                 loader: () => fetch('http://localhost:3000/users'),
-                hydrateFallbackElement:<Loader></Loader>
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/browsetips',
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
             {
                 path: "/mytipsdetails/:id",
                 element: <MyTipsDetails></MyTipsDetails>,
-                hydrateFallbackElement:<Loader></Loader>
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/exploregardeners',
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/gardenerDetails/:id',
-                element: <GardenerDetails></GardenerDetails>,
+                element: <PrivateRoute><GardenerDetails></GardenerDetails></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
             {
                 path: '/terms',
                 element: <Terms></Terms>,
+                hydrateFallbackElement: <Loader></Loader>
+            }, {
+                path: "/updateProfile",
+                element: <UpdateProfile></UpdateProfile>,
                 hydrateFallbackElement: <Loader></Loader>
             }
         ]

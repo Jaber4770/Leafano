@@ -1,16 +1,16 @@
 import React, { use } from 'react';
 import { AuthContext } from './Contexts/AuthContext';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoute = ({children}) => {
     const { user } = use(AuthContext);
-
+    const location = useLocation();
 
 
     if (user) { 
         return children;
     } else {
-        return <Navigate to='/login'></Navigate>
+        return <Navigate state={location.pathname} to='/login'></Navigate>
     }
 };
 
