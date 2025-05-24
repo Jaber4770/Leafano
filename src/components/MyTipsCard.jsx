@@ -40,7 +40,7 @@ const MyTipsCard = ({ tip }) => {
 
 
     return (
-        <div className='w-2/3 mx-auto mt-2'>
+        <div className='lg:w-2/3 mx-auto mt-2'>
             <div className='border-2 border-green-500 px-2 rounded-sm'>
                 <div>
                     <h1 className='text-3xl my-2 whitespace-normal break-words'>{title}</h1>

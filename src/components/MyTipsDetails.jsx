@@ -24,17 +24,17 @@ const MyTipsDetails = () => {
 
 
     return (
-        <div className='container mx-auto w-2/3 my-10'>
-            <div className='border-2 border-green-500 ps-2 rounded-sm'>
+        <div className='container mx-auto lg:w-2/3 my-10'>
+            <div className='border-2 border-green-500 ps-2 rounded-sm lg:mx-0 mx-4'>
                 <div>
                     <h1 className='text-3xl my-2 whitespace-normal break-words'>{matchedPost?.title}</h1>
                     <h3 className='font-bold text-2xl flex gap-2 items-center'><img className='w-8' src="https://i.ibb.co/6RrQTYBg/user-icon-in-flat-style-person-icon-client-symbol-vector.jpg" alt="" />{matchedPost?.name}</h3>
                 </div>
-                <div className='flex gap-5 my-2'>
-                    <p className='px-2 py-1 bg-gray-300 rounded-full'>{matchedPost?.category}</p>
-                    <p className='px-2 py-1 bg-gray-300 rounded-full'>{matchedPost?.privacy}</p>
-                    <p className='px-2 py-1 bg-gray-300 rounded-full'>{matchedPost?.plantType}</p>
-                    <p className='px-2 py-1 bg-gray-300 rounded-full'>{matchedPost?.difficultyLevel}</p>
+                <div className='lg:flex gap-5 my-2'>
+                    <p className='px-2 py-1 mb-2 bg-gray-300 rounded-full'>{matchedPost?.category}</p>
+                    <p className='px-2 py-1 mb-2 bg-gray-300 rounded-full'>{matchedPost?.privacy}</p>
+                    <p className='px-2 py-1 mb-2 bg-gray-300 rounded-full'>{matchedPost?.plantType}</p>
+                    <p className='px-2 py-1 mb-2 bg-gray-300 rounded-full'>{matchedPost?.difficultyLevel}</p>
                 </div>
                 <div className='pb-2'>
                     <img className='w-[60%]  mx-auto my-2 rounded-sm' src={matchedPost?.photo} alt="" />

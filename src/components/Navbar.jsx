@@ -51,10 +51,10 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to="/" className="font-bold text-2xl flex justify-center items-center font-poetsen">
+                    <Link to="/" className="font-bold text-2xl flex text-green-500 justify-center items-center font-poetsen">
                         <img className='w-14' src="https://i.ibb.co/ycBTCJMb/logo.png" alt="" />
                         Leafano
-                    </Link>
+                    </Link> 
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -87,7 +87,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                             :
-                            <div className='flex gap-5'>
+                            <div className='flex lg:gap-5 gap-2'>
                                 <Link to="/login" className="btn bg-green-500 text-white">Login</Link>
                                 <Link to="/signup" className="btn bg-green-500 text-white">SignUp</Link>
                             </div>

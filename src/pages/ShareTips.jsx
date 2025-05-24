@@ -31,19 +31,18 @@ const ShareTips = () => {
                 }
             })
         form.reset();
-
     }
 
 
     return (
         <div className='my-10 container mx-auto'>
-            <h1 className='text-5xl font-bold text-center'>Share your best gardening <span className='text-green-500'>hacks</span> and <span className='text-green-500'>advice</span>.</h1>
-            <div className='my-5 w-2/3 mx-auto mt-10'>
-                <form onSubmit={handleShareTip} className='space-y-4'>
+            <h1 className='text-2xl lg:text-5xl font-bold text-center'>Share your best gardening <span className='text-green-500'>hacks</span> and <span className='text-green-500'>advice</span>.</h1>
+            <div className='my-5 lg:w-2/3 mx-auto mt-10'>
+                <form onSubmit={handleShareTip} className='space-y-4 lg:mx-0 mx-4'>
                     <label htmlFor="">Title</label>
                     <input className='border-2 border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
 
-                    <div className='flex gap-5'>
+                    <div className='lg:flex gap-5'>
                         <div className='flex-1'>
                             <label htmlFor="">Difficulty Level</label> <br />
                             <input type="text" name='difficultyLevel' required className="input border-2 border-green-500  focus:outline-none" placeholder="Difficulty Level" list="difficulty" />

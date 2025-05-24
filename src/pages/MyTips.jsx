@@ -23,7 +23,7 @@ const MyTips = () => {
             <div>
 
             </div>
-            <div className='space-y-4'>
+            <div className='space-y-4 lg:mx-0 mx-4'>
                 {
                     mytips.map(tip => <MyTipsCard
                         tip={tip}

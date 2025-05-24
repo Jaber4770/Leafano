@@ -14,7 +14,7 @@ const FeaturedUserCard = ({ initData }) => {
 
 
                     <div className="avatar absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-                        <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+                        <div className="ring-primary ring-offset-base-100 lg:w-24 rounded-full ring-2 ring-offset-2">
                             <img src={profilePhoto} />
                         </div>
                     </div>

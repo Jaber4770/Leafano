@@ -11,9 +11,9 @@ const UpdateProfile = () => {
 
 
     return (
-        <div className='w-2/3 mx-auto mt-4'>
+        <div className='lg:w-2/3 mx-auto mt-4'>
             <h1 className='text-3xl font-semibold text-center'>Update your profile</h1>
-            <div className='border-2 border-green-500 rounded-sm p-5 pb-2 my-10'>
+            <div className='border-2 border-green-500 lg:mx-0 mx-4 rounded-sm p-5 pb-2 my-10'>
                 <form onSubmit={handleUpdateProfile}>
                     <div className='grid grid-cols-2 gap-4'>
                         <div>

@@ -20,7 +20,7 @@ const Footer = () => {
 
             {/* Footer Content */}
             <footer className="footer footer-horizontal footer-center text-base-content rounded p-10 container mx-auto relative z-10">
-                <nav className="grid grid-flow-col gap-4 list-none">
+                <nav className="lg:grid grid-flow-col gap-4 list-none hidden">
                     {links}
                 </nav>
                 <div className="grid grid-flow-col gap-5 text-2xl">

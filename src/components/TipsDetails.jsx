@@ -20,7 +20,7 @@ const TipsDetails = () => {
 
 
     return (
-        <div className='container mx-auto w-2/3 my-10'>
+        <div className='container mx-auto lg:w-2/3 my-10'>
             <div className='border-2 border-green-500 ps-2 rounded-sm'>
                 <div>
                     <h1 className='text-3xl my-2 whitespace-normal break-words'>{matchedPost?.title}</h1>

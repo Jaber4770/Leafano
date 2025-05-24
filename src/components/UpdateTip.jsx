@@ -47,14 +47,14 @@ const UpdateTip = () => {
     return (
         <div className='my-10 container mx-auto'>
             <h1 className='text-5xl font-bold text-center'>Update <span className='text-green-500'>tip</span></h1>
-            <div className='my-5 w-2/3 mx-auto mt-10'>
-                <form onSubmit={handelUpdate} className='space-y-4'>
+            <div className='my-5 lg:w-2/3 mx-auto mt-10'>
+                <form onSubmit={handelUpdate} className='space-y-4 lg:mx-0 mx-4'>
                     <label htmlFor="">Name</label>
                     <input value={matchedPost?.name} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
                     <label htmlFor="">Title</label>
                     <input defaultValue={matchedPost?.title} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
 
-                    <div className='flex gap-5'>
+                    <div className='lg:flex gap-5'>
                         <div className='flex-1'>
                             <label htmlFor="">Difficulty Level</label> <br />
                             <input defaultValue={matchedPost?.difficultyLevel} type="text" name='difficultyLevel' required className="input border-2 border-green-500  focus:outline-none" placeholder="Difficulty Level" list="difficulty" />

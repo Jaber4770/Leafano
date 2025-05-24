@@ -9,7 +9,7 @@ const TrendingTipsCard = ({ tip }) => {
             <div>
                 <div className=''>
                     <div className="tip-card bg-white rounded-xl p-6 relative shadow-lg inset-0 m-2">
-                        <span className="category-badge bg-green-100 text-green-800 absolute -right-5 px-2 py-1 rounded-full -top-2">{category}</span>
+                        <span className="category-badge bg-green-100 text-green-800 absolute lg:-right-5 right-0 px-2 py-1 rounded-full lg:-top-2">{category}</span>
                         <div className="flex items-center mb-4">
                             <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
                                 <img className='rounded-full' src={profilePhoto} alt="" />

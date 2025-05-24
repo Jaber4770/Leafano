@@ -6,7 +6,7 @@ const FAQ = () => {
             <div>
                 <h1 className='text-5xl font-semibold text-center pb-4 bg-gradient-to-r from-black to-green-500 bg-clip-text text-transparent'>Frequently Asked Questions</h1>
             </div>
-            <div className='flex justify-center items-center'>
+            <div className='lg:flex justify-center items-center'>
                 <div className='flex-1'>
                     <img className='w-full' src="https://i.ibb.co/0yhSwDnZ/woman-15256349.png" alt="" />
                 </div>
