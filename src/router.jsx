@@ -15,6 +15,7 @@ import TipsDetails from "./components/TipsDetails";
 import MyTipsDetails from "./components/MyTipsDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "./components/UpdateProfile";
+import UpdateTip from "./components/UpdateTip";
 
 export const router = createBrowserRouter([
     {
@@ -79,9 +80,15 @@ export const router = createBrowserRouter([
                 path: '/terms',
                 element: <Terms></Terms>,
                 hydrateFallbackElement: <Loader></Loader>
-            }, {
+            },
+            {
                 path: "/updateProfile",
                 element: <UpdateProfile></UpdateProfile>,
+                hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: '/updateTip/:id',
+                element: <UpdateTip></UpdateTip>,
                 hydrateFallbackElement: <Loader></Loader>
             }
         ]

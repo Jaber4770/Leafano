@@ -35,12 +35,7 @@ const MyTipsCard = ({ tip }) => {
                     })
             }
         });
-
-
-
     }
-
-
 
 
 
@@ -48,7 +43,7 @@ const MyTipsCard = ({ tip }) => {
         <div className='w-2/3 mx-auto mt-2'>
             <div className='border-2 border-green-500 px-2 rounded-sm'>
                 <div>
-                    <h1 className='text-3xl my-2'>{title}</h1>
+                    <h1 className='text-3xl my-2 whitespace-normal break-words'>{title}</h1>
                     <h3 className='font-bold text-2xl flex gap-2 items-center'><img className='w-8' src="https://i.ibb.co/6RrQTYBg/user-icon-in-flat-style-person-icon-client-symbol-vector.jpg" alt="" />{name}</h3>
                 </div>
                 <div className='flex gap-5 my-2'>
@@ -59,7 +54,7 @@ const MyTipsCard = ({ tip }) => {
                     <img className='w-[60%] mx-auto my-2 rounded-sm' src={photo} alt="" />
                     <div className='flex gap-5'>
                         <Link to={`/mytipsdetails/${_id}`} className='btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white flex-1 text-[20px]'>Read</Link>
-                        <Link to={`/mytipsdetails/${_id}`} className='btn bg-green-500 text-white flex-1 text-[20px]'>Update</Link>
+                        <Link to={`/updateTip/${_id}`} className='btn bg-green-500 text-white flex-1 text-[20px]'>Update</Link>
                         <button onClick={handleDeleteTips} className='btn bg-warning text-white flex-1 text-[20px]'>Delete</button>
                     </div>
                 </div>
