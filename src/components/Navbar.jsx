@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router';
 import "./Navbar.css";
 import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import Switcher from './Switcher';
 
 const Navbar = () => {
 
@@ -60,7 +61,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end flex items-center gap-5">
                     {
                         user ?
                             <div>
@@ -91,6 +92,9 @@ const Navbar = () => {
                                 <Link to="/signup" className="btn bg-green-500 text-white">SignUp</Link>
                             </div>
                     }
+                    <div>
+                        <Switcher />
+                    </div>
                 </div>
             </div>
         </div>

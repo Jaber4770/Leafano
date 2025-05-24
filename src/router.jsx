@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'tipsDetails/:id',
-                element: <TipsDetails></TipsDetails>,
+                element: <PrivateRoute><TipsDetails></TipsDetails></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mytipsdetails/:id",
-                element: <MyTipsDetails></MyTipsDetails>,
+                element: <PrivateRoute><MyTipsDetails></MyTipsDetails></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -83,12 +83,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/updateProfile",
-                element: <UpdateProfile></UpdateProfile>,
+                element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/updateTip/:id',
-                element: <UpdateTip></UpdateTip>,
+                element: <PrivateRoute><UpdateTip></UpdateTip></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             }
         ]
