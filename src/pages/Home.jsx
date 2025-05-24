@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router';
 import TrendingTips from '../components/TrendingTips';
 import GardeningHelp from '../components/GardeningHelp';
 import FAQ from '../components/FAQ';
+import { Slide } from 'react-awesome-reveal';
 
 const Home = () => {
     const [tips, setTips] = useState([]);
@@ -15,15 +16,21 @@ const Home = () => {
             .then(res => res.json())
             .then(result => {
                 setTips(result)
-        })
-    },[])
+            })
+    }, [])
 
     return (
         <div>
             <Slider></Slider>
-            <FeaturedGardeners initialGardenersData={initialGardenersData}></FeaturedGardeners>
-            <TrendingTips tips={tips}></TrendingTips>
-            <GardeningHelp></GardeningHelp>
+            <Slide direction='up' cascade triggerOnce>
+                <FeaturedGardeners initialGardenersData={initialGardenersData}></FeaturedGardeners>
+            </Slide>
+            <Slide direction='up' cascade triggerOnce>
+                <TrendingTips tips={tips}></TrendingTips>
+            </Slide>
+            <Slide direction='up' cascade triggerOnce>
+                <GardeningHelp></GardeningHelp>
+            </Slide>
             <FAQ></FAQ>
         </div>
     );
