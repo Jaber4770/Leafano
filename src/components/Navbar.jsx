@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
 
-    const { signOutUser } = use(AuthContext);
+    const { signOutUser, user } = use(AuthContext);
 
     const links = <>
         <li className='pe-2'><NavLink to='/'>Home</NavLink></li>
@@ -28,10 +28,11 @@ const Navbar = () => {
                 });
             })
             .then(error => {
-                alert(error);
+                alert(error.message);
             })
     }
 
+    console.log(user);
 
 
 
@@ -60,29 +61,33 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div>
-                        <Link to="/login" className="btn">Login</Link>
-                        <Link to="/signup" className="btn">SignUp</Link>
-                    </div>
-                    <div>
-                        <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button">
-                                <div className="relative group avatar avatar-online">
-                                    <div className="w-12 rounded-full">
-                                        <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" alt="Profile" />
+                    {
+                        user ?
+                            <div>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button">
+                                        <div className="relative group avatar avatar-online">
+                                            <div className="w-12 rounded-full">
+                                                <img src={user?.photoURL} alt="Profile" />
+                                            </div>
+                                            {/* Tooltip below */}
+                                            <div className="absolute left-1/2 -translate-x-1/2 mt-14 px-2 py-1 text-[16px] text-xs opacity-0 group-hover:opacity-100 transition duration-300 z-10">
+                                                <span className=''>{user?.displayName}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    {/* Tooltip below */}
-                                    <div className="absolute top-full mt-2 px-3 py-1 text-sm opacity-0 group-hover:opacity-100 duration-300 whitespace-nowrap z-10 pointer-events-none">
-                                        userName
-                                    </div>
+                                    <ul tabIndex={0} className="dropdown-content mt-3 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                        <li><span>{user?.displayName}</span></li>
+                                        <button onClick={handleLogOut} to='/login' className="btn">Logout</button>
+                                    </ul>
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="dropdown-content mt-3 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                                <li><span>User Name</span></li>
-                                <button onClick={handleLogOut} to='/login' className="btn">Logout</button>
-                            </ul>
-                        </div>
-                    </div>
+                            :
+                            <div className='flex gap-5'>
+                                <Link to="/login" className="btn bg-green-500 text-white">Login</Link>
+                                <Link to="/signup" className="btn bg-green-500 text-white">SignUp</Link>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

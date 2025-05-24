@@ -12,6 +12,7 @@ import Loader from "./components/Loader";
 import Terms from "./components/Terms";
 import GardenerDetails from "./components/GardenerDetails";
 import TipsDetails from "./components/TipsDetails";
+import MyTipsDetails from "./components/MyTipsDetails";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ export const router = createBrowserRouter([
                 path: '/mytips',
                 element: <MyTips></MyTips>,
                 hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: "/mytipsdetails/:id",
+                element: <MyTipsDetails></MyTipsDetails>,
+                hydrateFallbackElement:<Loader></Loader>
             },
             {
                 path: '/exploregardeners',

@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { AiOutlineLike } from 'react-icons/ai';
 import { BiSolidLike } from 'react-icons/bi';
 import { FaEye } from 'react-icons/fa';
-import { SlLike } from 'react-icons/sl';
 import { Link, useParams } from 'react-router';
 
-const TipsDetails = () => {
-    const [tipDetails, setTipsDetails] = useState([]);
+const MyTipsDetails = () => {
     const { id } = useParams();
+    const [mytips, setMytips] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
-            .then(data => setTipsDetails(data))
+            .then(data => {
+                console.log(data);
+                setMytips(data);
+            })
     }, [])
 
-    const matchedPost = tipDetails.find(tip => tip._id == id);
-    console.log(matchedPost);
+
+    const matchedPost = mytips.find(tip => tip._id == id);
+
+
 
 
     return (
@@ -45,7 +48,7 @@ const TipsDetails = () => {
                             </div>
                         </div>
                         <div>
-                            <Link to='/browsetips' className='btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white'>Go Back</Link>
+                            <Link to='/mytips' className='btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white'>Go Back</Link>
                         </div>
                     </div>
                 </div>
@@ -54,4 +57,4 @@ const TipsDetails = () => {
     );
 };
 
-export default TipsDetails;
+export default MyTipsDetails;

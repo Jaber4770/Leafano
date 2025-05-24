@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const ShareTips = () => {
 
-
+    const { user } = use(AuthContext);
 
     const handleShareTip = e => {
         e.preventDefault();
@@ -84,12 +85,17 @@ const ShareTips = () => {
                     <div className='flex gap-5'>
                         <div className='flex-1'>
                             <label htmlFor="">Name</label> <br />
-                            <input className='border-2 border-green-500 w-full rounded-sm px-2 py-1' placeholder='name' type="text" name='name' /> {/*  Value={name} add hobe*/}
+                            <input
+
+                                value={user?.displayName}
+                                className='border-2 border-green-500 w-full rounded-sm px-2 py-1' placeholder='name' type="text" name='name' /> {/*  Value={name} add hobe*/}
                         </div>
 
                         <div className='flex-1'>
                             <label htmlFor="">Email</label><br />
-                            <input className='border-2 border-green-500 w-full rounded-sm px-2 py-1' placeholder='email' type="email" name='email' />  {/*  Value add hobe*/}
+                            <input
+                                value={user?.email}
+                                className='border-2 border-green-500 w-full rounded-sm px-2 py-1' placeholder='email' type="email" name='email' />  {/*  Value add hobe*/}
                         </div>
                     </div>
 
