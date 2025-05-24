@@ -1,18 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import MyTipsCard from '../components/MyTipsCard';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const MyTips = () => {
 
-    const [myTips, setMyTips] = useState([]);
+    // const [myTips, setMyTips] = useState([]);
 
-    useEffect(() => {
+/*     useEffect(() => {
         fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setMyTips(data);
             })
+    }, []) */
+
+    // const { id } = useParams();
+    const [mytips, setMytips] = useState([]);
+    const { user } = use(AuthContext);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setMytips(data);
+            })
     }, [])
+
+    // const matchedPost = mytips.find(tip => tip._id == id);
 
 
 
@@ -23,7 +39,7 @@ const MyTips = () => {
 
             </div>
             {
-                myTips.map(tip => <MyTipsCard
+                mytips.map(tip => <MyTipsCard
                     tip={tip}
                     key={tip._id}></MyTipsCard>)
             }
