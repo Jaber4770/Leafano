@@ -17,8 +17,6 @@ const MyTips = () => {
     }, [])
 
 
-
-
     return (
         <div className='container mx-auto my-10'>
             <h1 className='text-3xl font-semibold text-center'>My Tips</h1>

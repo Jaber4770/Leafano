@@ -7,7 +7,7 @@ const BrowseTipsCard = ({ tip }) => {
         <div>
             <div className='border-2 border-green-500 ps-2 rounded-sm'>
                 <div>
-                    <h1 className='text-3xl my-2'>{title}</h1>
+                    <h1 className='text-3xl my-2 whitespace-normal break-words'>{title}</h1>
                     <h3 className='font-bold text-2xl flex gap-2 items-center'><img className='w-8' src="https://i.ibb.co/6RrQTYBg/user-icon-in-flat-style-person-icon-client-symbol-vector.jpg" alt="" />{name}</h3>
                 </div>
                 <div className='flex gap-5 my-2'>

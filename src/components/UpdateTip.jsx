@@ -49,13 +49,15 @@ const UpdateTip = () => {
             <h1 className='text-5xl font-bold text-center'>Update <span className='text-green-500'>tip</span></h1>
             <div className='my-5 w-2/3 mx-auto mt-10'>
                 <form onSubmit={handelUpdate} className='space-y-4'>
+                    <label htmlFor="">Name</label>
+                    <input value={matchedPost?.name} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
                     <label htmlFor="">Title</label>
-                    <input defaultValue={matchedPost?.title} className='border-2 border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
+                    <input defaultValue={matchedPost?.title} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
 
                     <div className='flex gap-5'>
                         <div className='flex-1'>
                             <label htmlFor="">Difficulty Level</label> <br />
-                            <input defaultValue={matchedPost?.title} type="text" name='difficultyLevel' required className="input border-2 border-green-500  focus:outline-none" placeholder="Difficulty Level" list="difficulty" />
+                            <input defaultValue={matchedPost?.difficultyLevel} type="text" name='difficultyLevel' required className="input border-2 border-green-500  focus:outline-none" placeholder="Difficulty Level" list="difficulty" />
                             <datalist id="difficulty">
                                 <option value="Easy"></option>
                                 <option value="Medium"></option>
@@ -65,7 +67,7 @@ const UpdateTip = () => {
 
                         <div className='flex-1'>
                             <label htmlFor="">Category</label><br />
-                            <input defaultValue={matchedPost?.title} type="text" name='category' required className="input border-2 border-green-500  focus:outline-none" placeholder="Category" list="category" />
+                            <input defaultValue={matchedPost?.category} type="text" name='category' required className="input border-2 border-green-500  focus:outline-none" placeholder="Category" list="category" />
                             <datalist id="category">
                                 <option value="Composting"></option>
                                 <option value="Plant Care"></option>
@@ -75,7 +77,7 @@ const UpdateTip = () => {
 
                         <div className='flex-1'>
                             <label htmlFor="">Privacy</label><br />
-                            <input defaultValue={matchedPost?.title} type="text" required name='privacy' className="input border-2 border-green-500  focus:outline-none" placeholder="Privacy" list="privacy" />
+                            <input defaultValue={matchedPost?.privacy} type="text" required name='privacy' className="input border-2 border-green-500  focus:outline-none" placeholder="Privacy" list="privacy" />
                             <datalist id="privacy">
                                 <option value="Public"></option>
                                 <option value="Private"></option>
@@ -84,15 +86,15 @@ const UpdateTip = () => {
 
                         <div className='flex-1'>
                             <label htmlFor="">Plant Type/Topic</label> <br />
-                            <input defaultValue={matchedPost?.title} required name='plantType' className='border-2 border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='What plant or topic is your tip about?' />
+                            <input defaultValue={matchedPost?.plantType} required name='plantType' className='border-2 border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='What plant or topic is your tip about?' />
                         </div>
                     </div>
 
                     <label htmlFor="">Share your tip with others</label>
-                    <textarea defaultValue={matchedPost?.title} name="postBody" required id="" rows='5' placeholder='Share your tip here.....' className='border-2 border-green-500 w-full rounded-sm px-2 py-1'></textarea>
+                    <textarea defaultValue={matchedPost?.postBody} name="postBody" required id="" rows='5' placeholder='Share your tip here.....' className='border-2 border-green-500 w-full rounded-sm px-2 py-1'></textarea>
 
                     <label htmlFor="">Photo url</label>
-                    <label defaultValue={matchedPost?.title} className="input validator border-2 border-green-500 w-full focus-within:outline-none">
+                    <label className="input validator border-2 border-green-500 w-full focus-within:outline-none">
                         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g
                                 strokeLinejoin="round"
@@ -108,7 +110,7 @@ const UpdateTip = () => {
                         <input
                             className='focus:outline-none'
                             type="url"
-                            defaultValue={matchedPost?.title}
+                            defaultValue={matchedPost?.photo}
                             required
                             name='photo'
                             placeholder="Photo url"
