@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiSolidLike } from 'react-icons/bi';
 import { FaEye } from 'react-icons/fa';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
 
-const MyTipsDetails = ({ mytips }) => {
-    const { id } = useParams();
-    // const [mytips, setMytips] = useState([]);
-    // const { user } = use(AuthContext);
+const MyTipsDetails = () => {
+    const [myTips, setMyTips] = useState([]);
 
-/*     useEffect(() => {
-        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
+    useEffect(() => {
+        fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setMytips(data);
+                setMyTips(data);
             })
-    }, []) */
+    }, [])
 
-    const matchedPost = mytips.find(tip => tip._id == id);
+    const { id } = useParams();
+
+    const matchedPost = myTips.find(tip => tip._id == id);
 
 
 

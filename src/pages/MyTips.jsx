@@ -3,19 +3,7 @@ import MyTipsCard from '../components/MyTipsCard';
 import { AuthContext } from '../Contexts/AuthContext';
 
 const MyTips = () => {
-
-    // const [myTips, setMyTips] = useState([]);
-
-/*     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setMyTips(data);
-            })
-    }, []) */
-
-    // const { id } = useParams();
+    
     const [mytips, setMytips] = useState([]);
     const { user } = use(AuthContext);
 
@@ -28,7 +16,6 @@ const MyTips = () => {
             })
     }, [])
 
-    // const matchedPost = mytips.find(tip => tip._id == id);
 
 
 
