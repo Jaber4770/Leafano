@@ -6,6 +6,7 @@ import {
 } from "react-router";
 import { router } from './router.jsx';
 import AuthProvider from './Contexts/AuthProvider.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 
 createRoot(document.getElementById('root')).render(

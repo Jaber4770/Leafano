@@ -13,6 +13,7 @@ import Terms from "./components/Terms";
 import GardenerDetails from "./components/GardenerDetails";
 import TipsDetails from "./components/TipsDetails";
 import MyTipsDetails from "./components/MyTipsDetails";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mytips',
-                element: <MyTips></MyTips>,
+                element: <PrivateRoute><MyTips></MyTips></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/sharetips',
-                element: <ShareTips></ShareTips>,
+                element: <PrivateRoute><ShareTips></ShareTips></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
