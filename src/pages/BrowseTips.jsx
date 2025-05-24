@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BrowseTipsCard from '../components/BrowseTipsCard';
 
 const BrowseTips = () => {
     const [tips, setTips] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTips(data))
     }, [])

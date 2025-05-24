@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -20,7 +19,7 @@ const MyTipsCard = ({ tip }) => {
 
                 console.log('delete');
                 // delete
-                fetch(`http://localhost:3000/gardenersTips/${_id}`, {
+                fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips/${_id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

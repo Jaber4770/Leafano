@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Slider from '../components/Slider';
-import FeaturedGardeners from '../components/FeaturedGardeners';
-import { useLoaderData } from 'react-router';
-import TrendingTips from '../components/TrendingTips';
-import GardeningHelp from '../components/GardeningHelp';
-import FAQ from '../components/FAQ';
+import { useEffect, useState } from 'react';
 import { Slide } from 'react-awesome-reveal';
+import { useLoaderData } from 'react-router';
+import FAQ from '../components/FAQ';
+import FeaturedGardeners from '../components/FeaturedGardeners';
+import GardeningHelp from '../components/GardeningHelp';
+import Slider from '../components/Slider';
+import TrendingTips from '../components/TrendingTips';
 
 const Home = () => {
     const [tips, setTips] = useState([]);
     const initialGardenersData = useLoaderData();
 
     useEffect(() => {
-        fetch('http://localhost:3000/topTrendingTips')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/topTrendingTips')
             .then(res => res.json())
             .then(result => {
                 setTips(result)

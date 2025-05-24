@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 const GardenerDetails = () => {
@@ -7,7 +7,7 @@ const GardenerDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => setGardeners(data))
     }, [])
@@ -37,7 +37,7 @@ const GardenerDetails = () => {
                     <h1>Email: {matchedGardener?.email}</h1>
                 </div>
             </div>
-</div>
+        </div>
     );
 };
 

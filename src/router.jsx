@@ -1,21 +1,21 @@
 import { createBrowserRouter } from "react-router";
-import Root from "./Layout/Root";
-import Home from "./pages/Home";
-import BrowseTips from "./pages/BrowseTips";
-import ExploreGardeners from "./pages/ExploreGardeners";
-import ErrorPage from "./pages/ErrorPage";
-import MyTips from "./pages/MyTips";
-import ShareTips from "./pages/ShareTips";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Loader from "./components/Loader";
-import Terms from "./components/Terms";
 import GardenerDetails from "./components/GardenerDetails";
-import TipsDetails from "./components/TipsDetails";
+import Loader from "./components/Loader";
 import MyTipsDetails from "./components/MyTipsDetails";
-import PrivateRoute from "./PrivateRoute";
+import Terms from "./components/Terms";
+import TipsDetails from "./components/TipsDetails";
 import UpdateProfile from "./components/UpdateProfile";
 import UpdateTip from "./components/UpdateTip";
+import Root from "./Layout/Root";
+import BrowseTips from "./pages/BrowseTips";
+import ErrorPage from "./pages/ErrorPage";
+import ExploreGardeners from "./pages/ExploreGardeners";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import MyTips from "./pages/MyTips";
+import ShareTips from "./pages/ShareTips";
+import SignUp from "./pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 index: true,
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/users'),
+                loader: () => fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/users'),
                 hydrateFallbackElement: <Loader></Loader>
             },
             {

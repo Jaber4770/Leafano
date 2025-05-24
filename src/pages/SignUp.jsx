@@ -1,7 +1,7 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import { Link } from 'react-router';
-import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const SignUp = () => {
     const { signInWithGooglePopUp } = use(AuthContext);
@@ -19,7 +19,7 @@ const SignUp = () => {
             .then(userCredential => {
                 console.log(userCredential.user);
                 if (userCredential.user) {
-                    fetch('http://localhost:3000/gardeners', {
+                    fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners', {
                         method: "POST",
                         headers: { 'content-type': "application/json" },
                         body: JSON.stringify(userProfile)
@@ -33,8 +33,8 @@ const SignUp = () => {
                                     title: "Account created successfully!",
                                     showConfirmButton: false,
                                     timer: 1500
-                                  });
-                           }
+                                });
+                            }
                         })
                 }
             })

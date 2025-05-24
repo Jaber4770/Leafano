@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Gardener from '../components/Gardener';
 
 const ExploreGardeners = () => {
@@ -6,7 +6,7 @@ const ExploreGardeners = () => {
     const [garderners, setGarderners] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

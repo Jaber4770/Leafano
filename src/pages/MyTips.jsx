@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import MyTipsCard from '../components/MyTipsCard';
 import { AuthContext } from '../Contexts/AuthContext';
 
@@ -8,7 +8,7 @@ const MyTips = () => {
     const { user } = use(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
+        fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

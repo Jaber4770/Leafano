@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -13,7 +13,7 @@ const UpdateTip = () => {
         const formData = new FormData(form);
         const updateTip = Object.fromEntries(formData.entries());
 
-        fetch(`http://localhost:3000/gardenersTips/${id}`, {
+        fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateTip)
@@ -34,7 +34,7 @@ const UpdateTip = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data));
     }, [])

@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
 
@@ -13,7 +13,7 @@ const ShareTips = () => {
         const tip = Object.fromEntries(formData.entries());
         // console.log(tip);
 
-        fetch('http://localhost:3000/gardenersTips', {
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(tip)

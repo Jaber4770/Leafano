@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiSolidLike } from 'react-icons/bi';
 import { FaEye } from 'react-icons/fa';
 import { Link, useParams } from 'react-router';
-import { AuthContext } from '../Contexts/AuthContext';
 
 const MyTipsDetails = () => {
     const [myTips, setMyTips] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { AiOutlineLike } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 import { BiSolidLike } from 'react-icons/bi';
 import { FaEye } from 'react-icons/fa';
-import { SlLike } from 'react-icons/sl';
 import { Link, useParams } from 'react-router';
 
 const TipsDetails = () => {
@@ -10,7 +8,7 @@ const TipsDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data))
     }, [])
