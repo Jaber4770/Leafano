@@ -1,19 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { use, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const GardenerDetails = () => {
-
+    const { user } = use(AuthContext);
     const [gardeners, setGardeners] = useState([]);
     const { id } = useParams();
+    const [mytips, setMytips] = useState([]);
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners')
+        fetch('https://leafano-server.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => setGardeners(data))
     }, [])
 
     const matchedGardener = gardeners.find(gardener => gardener._id == id);
 
+    useEffect(() => {
+        fetch(`https://leafano-server.vercel.app/gardenersTips?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                (data);
+                setMytips(data);
+            })
+    }, [])
+
+
+    // console.log(user.email);
 
     return (
         <div className='lg:w-2/3 mx-auto'>
@@ -25,16 +38,18 @@ const GardenerDetails = () => {
                     <img className='w-42 absolute rounded-full' src={matchedGardener?.photourl} alt="" />
                     <div className='ps-52'>
                         <h1 className='text-2xl font-semibold'>{matchedGardener?.name}</h1>
-                        <p>Total shared tips: </p>
+                        <p>Total shared tips: {mytips.length}</p>
                     </div>
                 </div>
                 <div className='mt-20 border-green-500 border-2 rounded-sm grid lg:grid-cols-2 gap-4 px-2 py-1 lg:mx-0 mx-4'>
-                    <p>Age: </p>
-                    <p>Gender: </p>
-                    <p>Staus: </p>
-                    <p>Experience: </p>
-                    <p>Image: </p>
+                    <p>Age: {matchedGardener?.name}</p>
+                    <p>Gender: {matchedGardener?.gender}</p>
+                    <p>Staus: {matchedGardener?.status}</p>
+                    <p>Experience: {matchedGardener?.bio}</p>
                     <h1>Email: {matchedGardener?.email}</h1>
+                </div>
+                <div className='mt-5'>
+                    <Link to={`/updateProfile/${id}`} className="btn w-full text-white text-[20px] bg-green-500">Update Profile</Link>
                 </div>
             </div>
         </div>

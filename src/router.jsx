@@ -26,8 +26,8 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 index: true,
+                // loader: () => fetch('/users'),
                 element: <Home></Home>,
-                loader: () => fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/users'),
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -82,7 +82,7 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
-                path: "/updateProfile",
+                path: "/updateProfile/:id",
                 element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
             },

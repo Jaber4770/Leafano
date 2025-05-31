@@ -7,10 +7,10 @@ const MyTipsDetails = () => {
     const [myTips, setMyTips] = useState([]);
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                (data);
                 setMyTips(data);
             })
     }, [])
@@ -41,7 +41,7 @@ const MyTipsDetails = () => {
                     <div className='flex items-center justify-around gap-5 bg-gray-100 rounded-sm mt-5 py-2'>
                         <div className='flex items-center gap-5'>
                             <div className='flex items-center gap-3'>
-                                <BiSolidLike className='text-3xl' /><span className='text-3xl'>0</span>
+                                <BiSolidLike className='text-3xl' /><span className='text-3xl'>{matchedPost?.like}</span>
                             </div>
                             <div className='flex items-center gap-3'>
                                 <FaEye className='text-3xl'></FaEye><span className='text-3xl'>0</span>

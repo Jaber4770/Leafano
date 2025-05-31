@@ -5,16 +5,40 @@ import { Link, useParams } from 'react-router';
 
 const TipsDetails = () => {
     const [tipDetails, setTipsDetails] = useState([]);
+    const [like, setLike] = useState(0);
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data))
     }, [])
 
     const matchedPost = tipDetails.find(tip => tip._id == id);
-    console.log(matchedPost);
+    //  (matchedPost);
+
+    useEffect(() => {
+        if (matchedPost?.like !== undefined) {
+            setLike(matchedPost.like);
+        }
+    }, [matchedPost]);
+
+    const handleLikeCount = () => {
+        const newLikeCount = like + 1;
+        setLike(newLikeCount);
+
+        fetch(`https://leafano-server.vercel.app/gardenersTips/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ like: newLikeCount })
+        })
+            .then(res => res.json())
+            .then(data => {
+                matchedPost.like = newLikeCount;
+                ('like counted', data)
+            });
+    }
+
 
 
     return (
@@ -36,9 +60,9 @@ const TipsDetails = () => {
                     <div className='flex items-center justify-around gap-5 bg-gray-100 rounded-sm mt-5 py-2'>
                         <div className='flex items-center gap-5'>
                             <div className='flex items-center gap-3'>
-                                <BiSolidLike className='text-3xl' /><span className='text-3xl'>0</span>
+                                <button onClick={handleLikeCount} className='flex items-center gap-2 cursor-pointer'><BiSolidLike className='text-3xl' /><span className='text-3xl'>{matchedPost ? matchedPost.like : 0}</span></button>
                             </div>
-                            <div className='flex items-center gap-3'>
+                            <div className='flex items-center gap-2'>
                                 <FaEye className='text-3xl'></FaEye><span className='text-3xl'>0</span>
                             </div>
                         </div>

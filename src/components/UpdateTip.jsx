@@ -13,14 +13,15 @@ const UpdateTip = () => {
         const formData = new FormData(form);
         const updateTip = Object.fromEntries(formData.entries());
 
-        fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips/${id}`, {
+
+        fetch(`https://leafano-server.vercel.app/gardenersTips/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateTip)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                (data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         title: "Update Done!",
@@ -34,13 +35,13 @@ const UpdateTip = () => {
 
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data));
     }, [])
 
     const matchedPost = tipDetails.find(tip => tip._id == id);
-    console.log(matchedPost);
+
 
     // /gardenersTips/:id
 

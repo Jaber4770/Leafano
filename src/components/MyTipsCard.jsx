@@ -17,9 +17,9 @@ const MyTipsCard = ({ tip }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                console.log('delete');
+                ('delete');
                 // delete
-                fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips/${_id}`, {
+                fetch(`https://leafano-server.vercel.app/gardenersTips/${_id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

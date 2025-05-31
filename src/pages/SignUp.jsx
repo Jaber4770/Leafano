@@ -17,9 +17,9 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(userCredential => {
-                console.log(userCredential.user);
+                (userCredential.user);
                 if (userCredential.user) {
-                    fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners', {
+                    fetch('https://leafano-server.vercel.app/gardeners', {
                         method: "POST",
                         headers: { 'content-type': "application/json" },
                         body: JSON.stringify(userProfile)
@@ -39,7 +39,7 @@ const SignUp = () => {
                 }
             })
             .catch(error => {
-                console.log(error);
+                alert(error);
             })
     }
 

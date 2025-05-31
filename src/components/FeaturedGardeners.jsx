@@ -1,9 +1,8 @@
-import React from 'react';
 import FeaturedUserCard from './FeaturedUserCard';
 
 
 const FeaturedGardeners = ({ initialGardenersData }) => {
-    console.log(initialGardenersData);
+    (initialGardenersData);
     return (
         <div className='container mx-auto my-20'>
             <div className='text-center lg:w-1/2 mx-auto'>

@@ -1,7 +1,7 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
-import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const Login = () => {
 
@@ -9,19 +9,23 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    // if (user?.email) {
+    //     navigate('/')
+    // }
+
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        //  (email, password);
 
         loginUser(email, password)
             .then(userCredential => {
-                // console.log(userCredential.user);
+                //  (userCredential.user);
                 if (userCredential.user) {
 
-                    navigate(`${location.state? location.state : '/'}`)
+                    navigate(`${location.state ? location.state : '/'}`)
 
                     Swal.fire({
                         position: "top-end",

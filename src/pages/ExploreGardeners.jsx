@@ -6,10 +6,10 @@ const ExploreGardeners = () => {
     const [garderners, setGarderners] = useState([]);
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardeners')
+        fetch('https://leafano-server.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                (data);
                 setGarderners(data);
             })
     }, [])

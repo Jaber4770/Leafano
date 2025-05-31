@@ -1,4 +1,5 @@
-import { use } from 'react';
+import { use, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
 
@@ -11,9 +12,9 @@ const ShareTips = () => {
         const form = e.target;
         const formData = new FormData(form);
         const tip = Object.fromEntries(formData.entries());
-        // console.log(tip);
+        //  (tip);
 
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips', {
+        fetch('https://leafano-server.vercel.app/gardenersTips', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(tip)
@@ -32,6 +33,20 @@ const ShareTips = () => {
             })
         form.reset();
     }
+
+    const [gardeners, setGardeners] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetch('https://leafano-server.vercel.app/gardeners')
+            .then(res => res.json())
+            .then(data => setGardeners(data))
+    }, [])
+
+    const matchedGardener = gardeners.find(gardener => gardener._id == id);
+
+
+
 
 
     return (
@@ -85,8 +100,7 @@ const ShareTips = () => {
                         <div className='flex-1'>
                             <label htmlFor="">Name</label> <br />
                             <input
-
-                                value={user?.displayName}
+                                value={matchedGardener?.name || user?.displayName}
                                 className='border-2 border-green-500 w-full rounded-sm px-2 py-1' placeholder='name' type="text" name='name' /> {/*  Value={name} add hobe*/}
                         </div>
 

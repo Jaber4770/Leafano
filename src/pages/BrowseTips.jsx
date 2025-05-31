@@ -3,33 +3,106 @@ import BrowseTipsCard from '../components/BrowseTipsCard';
 
 const BrowseTips = () => {
     const [tips, setTips] = useState([]);
+    const [skip, setSkip] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [allLoaded, setAllLoaded] = useState(false);
+    const [selectedDifficulty, setSelectedDifficulty] = useState('');
+
+    const limit = 6;
 
     useEffect(() => {
-        fetch('https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips')
+        // Reset on filter change and fetch fresh data
+        setSkip(0);
+        setTips([]);
+        setAllLoaded(false);
+        fetchTips(0, true);
+    }, [selectedDifficulty]);
+
+    const fetchTips = (currentSkip, isNewFilter = false) => {
+        setLoading(true);
+
+        const url = `https://leafano-server.vercel.app/gardenersTips?limit=${limit}&skip=${currentSkip}${selectedDifficulty ? `&difficulty=${selectedDifficulty}` : ''}`;
+
+        fetch(url)
             .then(res => res.json())
-            .then(data => setTips(data))
-    }, [])
+            .then(data => {
+                if (data.length < limit) {
+                    setAllLoaded(true);
+                } else {
+                    setAllLoaded(false);
+                }
 
+                // Sort tips so selected difficulty comes first
+                let sortedData = [...data];
+                if (selectedDifficulty) {
+                    sortedData.sort((a, b) => {
+                        if (a.difficultyLevel === selectedDifficulty && b.difficultyLevel !== selectedDifficulty) return -1;
+                        if (a.difficultyLevel !== selectedDifficulty && b.difficultyLevel === selectedDifficulty) return 1;
+                        return 0;
+                    });
+                }
 
+                if (isNewFilter || currentSkip === 0) {
+                    setTips(sortedData);
+                    setSkip(limit); // Reset skip after fresh load
+                } else {
+                    setTips(prev => [...prev, ...sortedData]);
+                    setSkip(prev => prev + limit); // Increment skip for pagination
+                }
+            })
+            .finally(() => setLoading(false));
+    };
+
+    const handleDifficultySelect = (difficulty) => {
+        if (difficulty !== selectedDifficulty) {
+            setSelectedDifficulty(difficulty);
+        }
+    };
+
+    const handleSeeAll = () => {
+        if (!allLoaded && !loading) {
+            fetchTips(skip);
+        }
+    };
 
     return (
         <div className='container mx-auto my-10'>
             <h1 className='text-center text-3xl font-semibold mb-3 text-shadow-lg'>Browse Tips</h1>
             <div className='lg:w-2/3 mx-auto'>
-                <div className='flex gap-5 lg:mx-0 mx-4'>
-                    <li className='list-none'><p>Category</p></li>
-                    <li className='list-none'><p>Privacy</p></li>
-                    <li className='list-none'><p>Plant Type</p></li>
-                    <li className='list-none'><p>Difficulty Lavel</p></li>
+                <div className='flex gap-5 lg:mx-0 mx-4 mb-3'>
+                    <li className='list-none btn'><p>Category</p></li>
+                    <li className='list-none btn'><p>Privacy</p></li>
+                    <li className='list-none btn'><p>Plant Type</p></li>
+                    <li className='list-none btn'>
+                        <div className="dropdown dropdown-center">
+                            <div tabIndex={0} role="button" className="m-1">Difficulty Level</div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                <li><a onClick={() => handleDifficultySelect('Easy')}>Easy</a></li>
+                                <li><a onClick={() => handleDifficultySelect('Medium')}>Medium</a></li>
+                                <li><a onClick={() => handleDifficultySelect('Hard')}>Hard</a></li>
+                                <li><a onClick={() => handleDifficultySelect('')}>All</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </div>
-                {/* dynamic part */}
+
                 <div className='grid grid-cols-1 gap-5 lg:mx-0 mx-4'>
-                    {
-                        tips.map(tip => <BrowseTipsCard
-                            key={tip._id}
-                            tip={tip}></BrowseTipsCard>)
-                    }
+                    {tips.map(tip => (
+                        <BrowseTipsCard key={tip._id} tip={tip} />
+                    ))}
                 </div>
+
+                {!allLoaded && (
+                    <div className='text-center'>
+                        <button
+                            className='btn bg-green-500 text-white text-[20px] mt-4'
+                            onClick={handleSeeAll}
+                            disabled={loading}
+                        >
+                            {loading ? 'Loading...' : 'See All'}
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     );

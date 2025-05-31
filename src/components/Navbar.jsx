@@ -1,13 +1,13 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import { Link, NavLink } from 'react-router';
-import "./Navbar.css";
-import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthContext';
+import "./Navbar.css";
 import Switcher from './Switcher';
 
 const Navbar = () => {
 
-    const { signOutUser, user } = use(AuthContext);
+    const { signOutUser, user,  } = use(AuthContext);
 
     const links = <>
         <li className='pe-2'><NavLink to='/'>Home</NavLink></li>
@@ -33,7 +33,7 @@ const Navbar = () => {
             })
     }
 
-    console.log(user);
+    //  (user);
 
 
 
@@ -54,7 +54,7 @@ const Navbar = () => {
                     <Link to="/" className="font-bold text-2xl flex text-green-500 justify-center items-center font-poetsen">
                         <img className='w-14' src="https://i.ibb.co/ycBTCJMb/logo.png" alt="" />
                         Leafano
-                    </Link> 
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -80,7 +80,7 @@ const Navbar = () => {
                                     <ul tabIndex={0} className="dropdown-content mt-3 menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                         <li><span>{user?.displayName}</span></li>
                                         <div className='space-y-2'>
-                                            <Link to='/updateProfile' className="btn w-full">Update Profile</Link>
+
                                             <button onClick={handleLogOut} to='/login' className="btn w-full">Logout</button>
                                         </div>
                                     </ul>

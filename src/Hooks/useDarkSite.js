@@ -1,19 +1,23 @@
-
-
 import { useState, useEffect } from "react";
 
 export default function useDarkSide() {
-    const [theme, setTheme] = useState(localStorage.theme);
-    const colorTheme = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", theme);
+    // Initialize theme from localStorage or default to light
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") || "light"
+    );
+
     useEffect(() => {
         const root = window.document.documentElement;
-        root.classList.remove(colorTheme);
-        root.classList.add(theme);
-        if (localStorage.theme == "dark")
-            localStorage.removeItem("theme");
-        else localStorage.setItem("theme", theme);
-    }, [theme, colorTheme]);
 
-    return [colorTheme, setTheme];
+        // Remove previous theme class if any
+        root.classList.remove(theme === "dark" ? "light" : "dark");
+
+        // Add current theme class
+        root.classList.add(theme);
+
+        // Update localStorage
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    return [theme, setTheme];
 }

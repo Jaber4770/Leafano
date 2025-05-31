@@ -1,4 +1,5 @@
 import { use, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import MyTipsCard from '../components/MyTipsCard';
 import { AuthContext } from '../Contexts/AuthContext';
 
@@ -6,12 +7,18 @@ const MyTips = () => {
 
     const [mytips, setMytips] = useState([]);
     const { user } = use(AuthContext);
+    // const location = useLocation();
+    const navigate = useNavigate();
+
+    if (!user.email) {
+        navigate('/login');
+    }
 
     useEffect(() => {
-        fetch(`https://leafano-server-jaber-ahmeds-projects-9e1e71cf.vercel.app/gardenersTips?email=${user.email}`)
+        fetch(`https://leafano-server.vercel.app/gardenersTips?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                (data);
                 setMytips(data);
             })
     }, [])
