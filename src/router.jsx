@@ -16,6 +16,7 @@ import MyTips from "./pages/MyTips";
 import ShareTips from "./pages/ShareTips";
 import SignUp from "./pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import UserDetails from "./components/UserDetails";
 
 export const router = createBrowserRouter([
     {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
                 path: '/updateTip/:id',
                 element: <PrivateRoute><UpdateTip></UpdateTip></PrivateRoute>,
                 hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: 'userDetails/:id',
+                element: <UserDetails></UserDetails>                
             }
         ]
     },

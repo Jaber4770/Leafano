@@ -7,7 +7,7 @@ const MyTipsDetails = () => {
     const [myTips, setMyTips] = useState([]);
 
     useEffect(() => {
-        fetch('https://leafano-server.vercel.app/gardenersTips')
+        fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
             .then(data => {
                 (data);

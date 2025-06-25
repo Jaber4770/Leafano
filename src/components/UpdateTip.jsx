@@ -14,7 +14,7 @@ const UpdateTip = () => {
         const updateTip = Object.fromEntries(formData.entries());
 
 
-        fetch(`https://leafano-server.vercel.app/gardenersTips/${id}`, {
+        fetch(`http://localhost:3000/gardenersTips/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateTip)
@@ -35,7 +35,7 @@ const UpdateTip = () => {
 
 
     useEffect(() => {
-        fetch('https://leafano-server.vercel.app/gardenersTips')
+        fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data));
     }, [])

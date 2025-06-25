@@ -15,7 +15,7 @@ const MyTips = () => {
     }
 
     useEffect(() => {
-        fetch(`https://leafano-server.vercel.app/gardenersTips?email=${user.email}`)
+        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 (data);

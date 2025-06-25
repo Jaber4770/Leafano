@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const FeaturedUserCard = ({ initData }) => {
-    const { name, profilePhoto, coverPhoto, bio, location, status } = initData;
+    const { name, profilePhoto, coverPhoto, bio,_id } = initData;
+    // const { id } = useParams();
+    // console.log(id);
     return (
             <div className="card bg-base-100 shadow-sm h-full">
                 <div className='relative'>
@@ -24,13 +27,15 @@ const FeaturedUserCard = ({ initData }) => {
                     <h2 className="card-title">{name}</h2>
                     <p>Bio: {bio}</p>
                     <div>
-                        <p>Location: {location}</p>
-                        <p>Status: {status}</p>
+                        {/* <p>Location: {location}</p> */}
+                        {/* <p>Status: {status}</p> */}
                         <p></p>
                     </div>
-                    {/* <div className="card-actions">
-                    { <button className="btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white w-full">Details</button> }
-                    </div> */}
+                    <div className="card-actions">
+                    <Link to={`userDetails/${_id}`}>
+                        <button className="btn bg-gradient-to-r from-emerald-600 from-10% via-green-500 via-40% to-emerald-600 to-90% text-white w-full">Details</button>
+                    </Link>
+                    </div>
                 </div>
             </div>
     );

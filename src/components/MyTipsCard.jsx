@@ -19,7 +19,7 @@ const MyTipsCard = ({ tip }) => {
 
                 ('delete');
                 // delete
-                fetch(`https://leafano-server.vercel.app/gardenersTips/${_id}`, {
+                fetch(`http://localhost:3000/gardenersTips/${_id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

@@ -6,10 +6,11 @@ import FeaturedGardeners from '../components/FeaturedGardeners';
 import GardeningHelp from '../components/GardeningHelp';
 import Slider from '../components/Slider';
 import TrendingTips from '../components/TrendingTips';
+import DonationSection from '../components/DonationSection';
 
 const getData = async () => {
     try {
-        const res = await axios.get('https://leafano-server.vercel.app/users');
+        const res = await axios.get('http://localhost:3000/users');
         return res.data;
     } catch (err) {
         console.error('Failed to fetch users:', err);
@@ -32,7 +33,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('https://leafano-server.vercel.app/gardenersTips')
+        fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
             .then(result => {
                 setTips(result);
@@ -53,6 +54,9 @@ const Home = () => {
             </Slide>
             <Slide direction='up' cascade triggerOnce>
                 <GardeningHelp />
+            </Slide>
+            <Slide direction='up' cascade triggerOnce>
+                <DonationSection></DonationSection>
             </Slide>
             <FAQ />
         </div>

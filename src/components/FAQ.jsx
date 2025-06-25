@@ -8,7 +8,7 @@ const FAQ = () => {
             </div>
             <div className='lg:flex justify-center items-center'>
                 <div className='flex-1'>
-                    <img className='w-full' src="https://i.ibb.co/0yhSwDnZ/woman-15256349.png" alt="" />
+                    <img className='w-2/3' src="https://i.ibb.co/0yhSwDnZ/woman-15256349.png" alt="" />
                 </div>
                 <div className='flex-1'>
                     <div className="join join-vertical bg-base-100">

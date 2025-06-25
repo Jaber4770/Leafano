@@ -19,7 +19,7 @@ const SignUp = () => {
             .then(userCredential => {
                 (userCredential.user);
                 if (userCredential.user) {
-                    fetch('https://leafano-server.vercel.app/gardeners', {
+                    fetch('http://localhost:3000/gardeners', {
                         method: "POST",
                         headers: { 'content-type': "application/json" },
                         body: JSON.stringify(userProfile)

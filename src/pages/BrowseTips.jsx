@@ -21,7 +21,7 @@ const BrowseTips = () => {
     const fetchTips = (currentSkip, isNewFilter = false) => {
         setLoading(true);
 
-        const url = `https://leafano-server.vercel.app/gardenersTips?limit=${limit}&skip=${currentSkip}${selectedDifficulty ? `&difficulty=${selectedDifficulty}` : ''}`;
+        const url = `http://localhost:3000/gardenersTips?limit=${limit}&skip=${currentSkip}${selectedDifficulty ? `&difficulty=${selectedDifficulty}` : ''}`;
 
         fetch(url)
             .then(res => res.json())

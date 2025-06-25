@@ -9,7 +9,7 @@ const GardenerDetails = () => {
     const [mytips, setMytips] = useState([]);
 
     useEffect(() => {
-        fetch('https://leafano-server.vercel.app/gardeners')
+        fetch('http://localhost:3000/gardeners')
             .then(res => res.json())
             .then(data => setGardeners(data))
     }, [])
@@ -17,7 +17,7 @@ const GardenerDetails = () => {
     const matchedGardener = gardeners.find(gardener => gardener._id == id);
 
     useEffect(() => {
-        fetch(`https://leafano-server.vercel.app/gardenersTips?email=${user.email}`)
+        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 (data);
@@ -32,7 +32,7 @@ const GardenerDetails = () => {
         <div className='lg:w-2/3 mx-auto'>
             <div className='mb-20'>
                 <div className='w-full'>
-                    <img className='rounded-b-lg' src="https://i.ibb.co/qYQqzCh4/Generated-image-2.png" alt="" />
+                    <img className='rounded-b-lg h-[450px] w-full' src="https://i.ibb.co/qYQqzCh4/Generated-image-2.png" alt="" />
                 </div>
                 <div className='flex relative gap-5 items-center lg:ps-20 lg:mx-0 mx-4'>
                     <img className='w-42 absolute rounded-full' src={matchedGardener?.photourl} alt="" />

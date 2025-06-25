@@ -12,7 +12,7 @@ const UpdateProfile = () => {
     useEffect(() => {
         const fetchGardener = async () => {
             try {
-                const response = await axios.get(`https://leafano-server.vercel.app/gardeners/${id}`);
+                const response = await axios.get(`http://localhost:3000/gardeners/${id}`);
                 setGarderners(response.data);
                 setformData({
                     name: response.data.name,
@@ -59,7 +59,7 @@ const UpdateProfile = () => {
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`https://leafano-server.vercel.app/gardeners/${id}`, formData);
+            const response = await axios.put(`http://localhost:3000/gardeners/${id}`, formData);
             if (response.data.modifiedCount) {
                 Swal.fire({
                     title: "Profile update done!",

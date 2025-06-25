@@ -21,7 +21,7 @@ const Slider = () => {
                     className="relative bg-cover bg-center"
                     style={{
                         backgroundImage: 'url(https://i.ibb.co/FLMMPjPy/image-12.png)',
-                        height: 'calc(100vh - 65px)',
+                        height: 'calc(100vh - 200px)',
 
                     }}
                 >
@@ -66,7 +66,7 @@ const Slider = () => {
                     className="relative bg-cover bg-center"
                     style={{
                         backgroundImage: 'url(https://i.ibb.co/YB6nkT51/image-10.png)',
-                        height: 'calc(100vh - 65px)',
+                        height: 'calc(100vh - 200px)',
                     }}
                 >
                     {/* Black overlay with opacity */}
@@ -110,7 +110,7 @@ const Slider = () => {
                     className="relative bg-cover bg-center"
                     style={{
                         backgroundImage: 'url(https://i.ibb.co/1GY0j9t2/image-9.png)',
-                        height: 'calc(100vh - 65px)',
+                        height: 'calc(100vh - 200px)',
                     }}
                 >
                     {/* Black overlay with opacity */}
@@ -156,7 +156,7 @@ const Slider = () => {
                     className="relative bg-cover bg-center"
                     style={{
                         backgroundImage: 'url(https://i.ibb.co/8grfLz2y/image-8.png)',
-                        height: 'calc(100vh - 65px)',
+                        height: 'calc(100vh - 200px)',
                     }}
                 >
                     {/* Black overlay with opacity */}

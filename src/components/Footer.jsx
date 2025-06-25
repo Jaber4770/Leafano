@@ -3,6 +3,7 @@ import { FaFacebook, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Link, NavLink } from 'react-router';
 import "./Navbar.css";
+import logo from '../assets/logo.png'
 
 const Footer = () => {
     const links = <>
@@ -31,6 +32,7 @@ const Footer = () => {
                     <Link to='/'><FaLinkedin className='text-green-600 cursor-pointer' /></Link>
                 </div>
                 <div>
+                    <img className='w-24'    src={logo} alt="" />
                     <address className="not-italic text-sm leading-relaxed">
                         <strong>Leafano.</strong><br />
                         123 Bloom Lane,<br />
