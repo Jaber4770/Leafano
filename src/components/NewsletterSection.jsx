@@ -2,7 +2,7 @@ import React from "react";
 
 const NewsletterSection = () => {
     return (
-        <section className="bg-white py-12 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md my-10 border border-green-100">
+        <section className=" py-12 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md my-10 border border-green-100">
             <div className="text-center max-w-2xl mx-auto">
                 <h2 className="text-3xl font-bold text-green-700 mb-4">
                     Join the Leafano Newsletter 🌿

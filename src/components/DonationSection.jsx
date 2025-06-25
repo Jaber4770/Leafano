@@ -2,10 +2,10 @@ import React from "react";
 
 const DonationSection = () => {
     return (
-        <section className="bg-green-50 py-12 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md my-10">
+        <section className=" py-12 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md my-10">
             <div className="text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold text-green-700 mb-4">Support Leafano 🌱</h2>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-600 mb-6">
                     Love what we’re doing? Help us grow and keep sharing gardening tips with the world.
                     Your donation helps us improve content, maintain servers, and reach more green thumbs!
                 </p>
@@ -24,7 +24,7 @@ const DonationSection = () => {
                         href="https://paypal.me/yourpaypal"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-accent"
+                        className="btn text-white bg-[#22c55e]"
                     >
                         Donate via PayPal 💸
                     </a>

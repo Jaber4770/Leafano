@@ -32,9 +32,12 @@ const Footer = () => {
                     <Link to='/'><FaLinkedin className='text-green-600 cursor-pointer' /></Link>
                 </div>
                 <div>
-                    <img className='w-24'    src={logo} alt="" />
+
                     <address className="not-italic text-sm leading-relaxed">
-                        <strong>Leafano.</strong><br />
+                        <div className='flex gap-2 items-center'>
+                            <img className='w-24' src={logo} alt="" />
+                            <strong className='text-3xl'>Leafano.</strong><br />
+                        </div>
                         123 Bloom Lane,<br />
                         Garden City, FL 32789,<br />
                         United States<br />
