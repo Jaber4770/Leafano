@@ -7,6 +7,7 @@ import GardeningHelp from '../components/GardeningHelp';
 import Slider from '../components/Slider';
 import TrendingTips from '../components/TrendingTips';
 import DonationSection from '../components/DonationSection';
+import NewsletterSection from '../components/NewsletterSection';
 
 const getData = async () => {
     try {
@@ -58,7 +59,12 @@ const Home = () => {
             <Slide direction='up' cascade triggerOnce>
                 <DonationSection></DonationSection>
             </Slide>
-            <FAQ />
+            <Slide direction='up' cascade triggerOnce>
+                <FAQ />
+            </Slide>
+            <Slide direction='up' cascade triggerOnce>
+                <NewsletterSection></NewsletterSection>
+            </Slide>
         </div>
     );
 };
