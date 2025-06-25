@@ -2,7 +2,7 @@ import React from 'react';
 
 const FAQ = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mb-20'>
             <div>
                 <h1 className='text-5xl font-semibold text-center pb-4 bg-gradient-to-r from-black to-green-500 bg-clip-text text-transparent'>Frequently Asked Questions</h1>
             </div>

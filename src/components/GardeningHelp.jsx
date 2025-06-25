@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const GardeningHelp = () => {
     return (
-        <div className='my-20'>
+        <div className='mb-20'>
             <div className='bg-[url("https://extension.okstate.edu/articles/images/beginning_gardener_banner.jpg")] h-[600px] bg-cover bg-center flex lg:items-center lg:pt-0 pt-20'>
                 <div className='container mx-auto'>
                     <h1 className='lg:text-5xl text-3xl font-bold'>Need Help For Gardening? <br /> Please Contact Us</h1>

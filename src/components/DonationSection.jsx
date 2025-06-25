@@ -2,7 +2,7 @@ import React from "react";
 
 const DonationSection = () => {
     return (
-        <section className=" py-12 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md my-10">
+        <section className="py-5 px-4 sm:px-8 lg:px-16 rounded-2xl shadow-md mb-20">
             <div className="text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold text-green-700 mb-4">Support Leafano 🌱</h2>
                 <p className="text-gray-600 mb-6">
