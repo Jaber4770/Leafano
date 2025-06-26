@@ -17,6 +17,7 @@ import ShareTips from "./pages/ShareTips";
 import SignUp from "./pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import UserDetails from "./components/UserDetails";
+import GetHelpForm from "./components/GetHelpForm";
 
 export const router = createBrowserRouter([
     {
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
             {
                 path: 'userDetails/:id',
                 element: <UserDetails></UserDetails>                
+            },
+            {
+                path: 'getHelpFromExpert',
+                element: <GetHelpForm></GetHelpForm>
             }
         ]
     },
