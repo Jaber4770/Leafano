@@ -9,7 +9,7 @@ const TrendingTips = ({ tips }) => {
                 <h1 className='text-5xl text-center font-bold mb-2'><span className="bg-gradient-to-r from-black to-green-500 bg-clip-text text-5xl font-extrabold text-transparent">Trending </span>Tips</h1>
                 <p className='italic'>Discover the top trending gardening tips shared by passionate plant lovers—boost growth, fight pests naturally, and keep your greens thriving with smart seasonal tricks.</p>
             </div>
-            <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 mt-10 lg:mx-0 mx-4'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-10 lg:mx-0 mx-4'>
                 {
                     tips.map(tip => <TrendingTipsCard
                         tip={tip}
