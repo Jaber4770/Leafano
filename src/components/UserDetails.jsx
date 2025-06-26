@@ -52,9 +52,9 @@ const UserDetails = () => {
                     </div>
                     <div className='mt-20 border-green-500 border-2 rounded-sm grid lg:grid-cols-2 gap-4 px-2 py-1 lg:mx-0 mx-4'>
                         {/* <p>Age: {matchedUser?.name}</p> */}
-                        <p>Staus: {matchedUser?.status}</p>
-                        <p>Bio: {matchedUser?.bio}</p>
-                        <h1>Location: {matchedUser?.location}</h1>
+                        <p><span className='font-bold'>Staus:</span> {matchedUser?.status}</p>
+                        <p><span className='font-bold'>Bio:</span> {matchedUser?.bio}</p>
+                        <h1><span className='font-bold'>Location:</span> {matchedUser?.location}</h1>
                         {/* <p>Status: {matchedUser?.status}</p> */}
                     </div>
                     <div className='mt-5'>

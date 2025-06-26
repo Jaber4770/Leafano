@@ -67,12 +67,10 @@ const BrowseTips = () => {
 
     return (
         <div className='container mx-auto my-10'>
-            <h1 className='text-center text-3xl font-semibold mb-3 text-shadow-lg'>Browse Tips</h1>
-            <div className='lg:w-2/3 mx-auto'>
+            <h1 className=' text-3xl font-semibold mb-3 text-shadow-lg'>Browse Tips</h1>
+            <div className=''>
                 <div className='flex gap-5 lg:mx-0 mx-4 mb-3'>
-                    <li className='list-none btn'><p>Category</p></li>
-                    <li className='list-none btn'><p>Privacy</p></li>
-                    <li className='list-none btn'><p>Plant Type</p></li>
+                    <li className='list-none btn'><p>A-Z</p></li>
                     <li className='list-none btn'>
                         <div className="dropdown dropdown-center">
                             <div tabIndex={0} role="button" className="m-1">Difficulty Level</div>
@@ -86,7 +84,7 @@ const BrowseTips = () => {
                     </li>
                 </div>
 
-                <div className='grid grid-cols-1 gap-5 lg:mx-0 mx-4'>
+                <div className='grid grid-cols-4 gap-5 lg:mx-0 mx-4'>
                     {tips.map(tip => (
                         <BrowseTipsCard key={tip._id} tip={tip} />
                     ))}
