@@ -7,7 +7,7 @@ const Aside = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { user,  } = use(AuthContext);
     const toggleSidebar = () => setIsOpen(!isOpen);
-    console.log(user);
+    // console.log(user);
     return (
         <>
             {/* Mobile toggle button */}

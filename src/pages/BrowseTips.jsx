@@ -111,7 +111,7 @@ const BrowseTips = () => {
                     </li>
                 </div>
 
-                <div className='grid grid-cols-4 gap-5 lg:mx-0 mx-4'>
+                <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 lg:mx-0 mx-4'>
                     {tips.map(tip => (
                         <BrowseTipsCard key={tip._id} tip={tip} />
                     ))}
