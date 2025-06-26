@@ -7,6 +7,10 @@ const BrowseTips = () => {
     const [loading, setLoading] = useState(false);
     const [allLoaded, setAllLoaded] = useState(false);
     const [selectedDifficulty, setSelectedDifficulty] = useState('');
+    const [isAscending, setIsAscending] = useState(false);
+    const [sortByDifficulty, setSortByDifficulty] = useState(false);
+    
+
 
     const limit = 6;
 
@@ -16,12 +20,16 @@ const BrowseTips = () => {
         setTips([]);
         setAllLoaded(false);
         fetchTips(0, true);
-    }, [selectedDifficulty]);
+    }, [selectedDifficulty, isAscending, sortByDifficulty]);
 
     const fetchTips = (currentSkip, isNewFilter = false) => {
         setLoading(true);
 
-        const url = `http://localhost:3000/gardenersTips?limit=${limit}&skip=${currentSkip}${selectedDifficulty ? `&difficulty=${selectedDifficulty}` : ''}`;
+        const url = `http://localhost:3000/gardenersTips?limit=${limit}&skip=${currentSkip}`
+            + (selectedDifficulty ? `&difficulty=${selectedDifficulty}` : '')
+            + (isAscending ? `&sort=asc` : '')
+            + (sortByDifficulty ? `&sortByDifficulty=true` : '');
+    
 
         fetch(url)
             .then(res => res.json())
@@ -54,10 +62,12 @@ const BrowseTips = () => {
     };
 
     const handleDifficultySelect = (difficulty) => {
+        setSortByDifficulty(true); // turn on sorting by difficulty
         if (difficulty !== selectedDifficulty) {
             setSelectedDifficulty(difficulty);
         }
     };
+    
 
     const handleSeeAll = () => {
         if (!allLoaded && !loading) {
@@ -65,12 +75,23 @@ const BrowseTips = () => {
         }
     };
 
+    const handleAscending = () => {
+        setIsAscending(true);
+        setSortByDifficulty(false); // turn off difficulty sorting
+        setSelectedDifficulty('');
+        setTips([]);
+        fetchTips(0, true); // fresh fetch
+    };    
+
     return (
         <div className='container mx-auto my-10'>
             <h1 className=' text-3xl font-semibold mb-3 text-shadow-lg'>Browse Tips</h1>
             <div className=''>
                 <div className='flex gap-5 lg:mx-0 mx-4 mb-3'>
-                    <li className='list-none btn'><p>A-Z</p></li>
+                    <li onClick={handleAscending} className='list-none btn'>
+                        <p>{isAscending ? 'A-Z (On)' : 'A-Z'}</p>
+                    </li>
+
                     <li className='list-none btn'>
                         <div className="dropdown dropdown-center">
                             <div tabIndex={0} role="button" className="m-1">Difficulty Level</div>
@@ -78,7 +99,10 @@ const BrowseTips = () => {
                                 <li><a onClick={() => handleDifficultySelect('Easy')}>Easy</a></li>
                                 <li><a onClick={() => handleDifficultySelect('Medium')}>Medium</a></li>
                                 <li><a onClick={() => handleDifficultySelect('Hard')}>Hard</a></li>
-                                <li><a onClick={() => handleDifficultySelect('')}>All</a></li>
+                                <li><a onClick={() => {
+                                    setSelectedDifficulty('');
+                                    setSortByDifficulty(false);
+                                }}>All</a></li>
                             </ul>
                         </div>
                     </li>

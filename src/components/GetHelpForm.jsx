@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const GetHelpForm = () => {
@@ -8,6 +9,7 @@ const GetHelpForm = () => {
         issue: '',
         description: '',
     });
+    const navigate = useNavigate();
 
     const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,13 +26,15 @@ const GetHelpForm = () => {
             showConfirmButton: false,
             timer: 1500
         });
+
         // Reset form
         setFormData({ name: '', email: '', issue: '', description: '' });
+        navigate('/')
     };
 
     return (
-        <div className="min-h-screen bg-base-200 py-10 px-4 sm:px-8 lg:px-32">
-            <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <div className="min-h-screen py-10 px-4 sm:px-8 lg:px-32">
+            <div className="max-w-3xl mx-auto p-8 rounded-lg shadow-md">
                 <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
                     Get Help from Expert Gardeners
                 </h2>

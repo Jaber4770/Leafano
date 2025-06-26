@@ -1,125 +1,192 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 
 const UpdateTip = () => {
     const { id } = useParams();
     const [tipDetails, setTipsDetails] = useState([]);
-
-
-    const handelUpdate = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const updateTip = Object.fromEntries(formData.entries());
-
-
-        fetch(`http://localhost:3000/gardenersTips/${id}`, {
-            method: "PATCH",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(updateTip)
-        })
-            .then(res => res.json())
-            .then(data => {
-                (data);
-                if (data.modifiedCount) {
-                    Swal.fire({
-                        title: "Update Done!",
-                        icon: "success",
-                        draggable: true,
-                        timer: 500
-                    });
-                }
-            })
-    }
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:3000/gardenersTips')
             .then(res => res.json())
-            .then(data => setTipsDetails(data));
-    }, [])
+            .then(data => setTipsDetails(data))
+            .catch(err => console.error("Failed to load tip details:", err));
+    }, []);
 
     const matchedPost = tipDetails.find(tip => tip._id == id);
 
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const updateTip = Object.fromEntries(formData.entries());
 
-    // /gardenersTips/:id
+        fetch(`http://localhost:3000/gardenersTips/${id}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateTip)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        title: "Update Done!",
+                        icon: "success",
+                        timer: 1000,
+                        showConfirmButton: false
+                    });
+                    navigate('/mytips')
+                }
+            })
+            .catch(err => {
+                Swal.fire("Update Failed", "Please try again", "error");
+                console.error(err);
+            });
+    };
 
     return (
-        <div className='my-10 container mx-auto'>
-            <h1 className='text-5xl font-bold text-center'>Update <span className='text-green-500'>tip</span></h1>
-            <div className='my-5 lg:w-2/3 mx-auto mt-10'>
-                <form onSubmit={handelUpdate} className='space-y-4 lg:mx-0 mx-4'>
-                    <label htmlFor="">Name</label>
-                    <input value={matchedPost?.name} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
-                    <label htmlFor="">Title</label>
-                    <input defaultValue={matchedPost?.title} className='border-2 whitespace-normal break-words border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='Title' name='title' required />
+        <div className="container mx-auto my-10 px-4">
+            <h1 className="text-4xl lg:text-5xl font-bold text-center mb-10">
+                Update <span className="text-green-600">Tip</span>
+            </h1>
 
-                    <div className='lg:flex gap-5'>
-                        <div className='flex-1'>
-                            <label htmlFor="">Difficulty Level</label> <br />
-                            <input defaultValue={matchedPost?.difficultyLevel} type="text" name='difficultyLevel' required className="input border-2 border-green-500  focus:outline-none" placeholder="Difficulty Level" list="difficulty" />
+            <div className="lg:w-3/4 mx-auto">
+                <form onSubmit={handleUpdate} className="space-y-6">
+                    <div>
+                        <label className="block font-semibold mb-1">Name</label>
+                        <input
+                            defaultValue={matchedPost?.name}
+                            name="name"
+                            required
+                            placeholder="Name"
+                            className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                            type="text"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block font-semibold mb-1">Title</label>
+                        <input
+                            defaultValue={matchedPost?.title}
+                            name="title"
+                            required
+                            placeholder="Title"
+                            className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                            type="text"
+                        />
+                    </div>
+
+                    <div className="grid lg:grid-cols-4 gap-4">
+                        <div>
+                            <label className="block font-semibold mb-1">Difficulty Level</label>
+                            <input
+                                defaultValue={matchedPost?.difficultyLevel}
+                                name="difficultyLevel"
+                                required
+                                className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                                placeholder="Difficulty Level"
+                                list="difficulty"
+                            />
                             <datalist id="difficulty">
-                                <option value="Easy"></option>
-                                <option value="Medium"></option>
-                                <option value="Hard"></option>
+                                <option value="Easy" />
+                                <option value="Medium" />
+                                <option value="Hard" />
                             </datalist>
                         </div>
 
-                        <div className='flex-1'>
-                            <label htmlFor="">Category</label><br />
-                            <input defaultValue={matchedPost?.category} type="text" name='category' required className="input border-2 border-green-500  focus:outline-none" placeholder="Category" list="category" />
+                        <div>
+                            <label className="block font-semibold mb-1">Category</label>
+                            <input
+                                defaultValue={matchedPost?.category}
+                                name="category"
+                                required
+                                className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                                placeholder="Category"
+                                list="category"
+                            />
                             <datalist id="category">
-                                <option value="Composting"></option>
-                                <option value="Plant Care"></option>
-                                <option value="Vertical Gardening"></option>
+                                <option value="Composting" />
+                                <option value="Plant Care" />
+                                <option value="Vertical Gardening" />
                             </datalist>
                         </div>
 
-                        <div className='flex-1'>
-                            <label htmlFor="">Privacy</label><br />
-                            <input defaultValue={matchedPost?.privacy} type="text" required name='privacy' className="input border-2 border-green-500  focus:outline-none" placeholder="Privacy" list="privacy" />
+                        <div>
+                            <label className="block font-semibold mb-1">Privacy</label>
+                            <input
+                                defaultValue={matchedPost?.privacy}
+                                name="privacy"
+                                required
+                                className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                                placeholder="Privacy"
+                                list="privacy"
+                            />
                             <datalist id="privacy">
-                                <option value="Public"></option>
-                                <option value="Private"></option>
+                                <option value="Public" />
+                                <option value="Private" />
                             </datalist>
                         </div>
 
-                        <div className='flex-1'>
-                            <label htmlFor="">Plant Type/Topic</label> <br />
-                            <input defaultValue={matchedPost?.plantType} required name='plantType' className='border-2 border-green-500 w-full rounded-sm px-2 py-1' type="text" placeholder='What plant or topic is your tip about?' />
+                        <div>
+                            <label className="block font-semibold mb-1">Plant Type / Topic</label>
+                            <input
+                                defaultValue={matchedPost?.plantType}
+                                name="plantType"
+                                required
+                                placeholder="Plant Type or Topic"
+                                className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                                type="text"
+                            />
                         </div>
                     </div>
 
-                    <label htmlFor="">Share your tip with others</label>
-                    <textarea defaultValue={matchedPost?.postBody} name="postBody" required id="" rows='5' placeholder='Share your tip here.....' className='border-2 border-green-500 w-full rounded-sm px-2 py-1'></textarea>
+                    <div>
+                        <label className="block font-semibold mb-1">Share Your Tip</label>
+                        <textarea
+                            defaultValue={matchedPost?.postBody}
+                            name="postBody"
+                            required
+                            rows="5"
+                            placeholder="Write your tip here..."
+                            className="w-full border-2 border-green-500 rounded-md px-3 py-2 focus:outline-none"
+                        />
+                    </div>
 
-                    <label htmlFor="">Photo url</label>
-                    <label className="input validator border-2 border-green-500 w-full focus-within:outline-none">
-                        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <g
-                                strokeLinejoin="round"
-                                strokeLinecap="round"
-                                strokeWidth="2.5"
+                    <div>
+                        <label className="block font-semibold mb-1">Photo URL</label>
+                        <div className="relative flex items-center border-2 border-green-500 rounded-md px-3 py-2">
+                            <svg
+                                className="h-5 w-5 mr-2 opacity-60"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             >
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                            </g>
-                        </svg>
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                            </svg>
+                            <input
+                                className="flex-1 focus:outline-none"
+                                type="url"
+                                defaultValue={matchedPost?.photo}
+                                name="photo"
+                                required
+                                placeholder="Photo URL"
+                                title="Must be a valid URL"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="text-center">
                         <input
-                            className='focus:outline-none'
-                            type="url"
-                            defaultValue={matchedPost?.photo}
-                            required
-                            name='photo'
-                            placeholder="Photo url"
-                            title="Must be valid URL"
+                            type="submit"
+                            value="Update"
+                            className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-2 rounded-md text-xl cursor-pointer"
                         />
-                    </label>
-                    <p className="validator-hint none">Must be valid URL</p>
-                    <input type="submit" className='btn w-1/2 mx-auto flex bg-green-500 text-white font-bold text-2xl' value="Update" />
+                    </div>
                 </form>
             </div>
         </div>
