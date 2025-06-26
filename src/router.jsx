@@ -18,6 +18,8 @@ import SignUp from "./pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import UserDetails from "./components/UserDetails";
 import GetHelpForm from "./components/GetHelpForm";
+import Dashboard from "./pages/Dashboard";
+import DashboardLayout from "./Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
     {
@@ -95,7 +97,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'userDetails/:id',
-                element: <UserDetails></UserDetails>                
+                element: <UserDetails></UserDetails>
             },
             {
                 path: 'getHelpFromExpert',
@@ -103,4 +105,24 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard',
+                element:<Dashboard></Dashboard>
+            },
+            {
+                path: '/dashboard/mytips',
+                element: <PrivateRoute><MyTips></MyTips></PrivateRoute>,
+                hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: '/dashboard/sharetips',
+                element: <PrivateRoute><ShareTips></ShareTips></PrivateRoute>,
+                hydrateFallbackElement: <Loader></Loader>
+            }
+        ]
+    }
 ]);

@@ -15,6 +15,7 @@ const Navbar = () => {
         <li className='pe-2'><NavLink to='/mytips'>My Tips</NavLink></li>
         <li className='pe-2'><NavLink to='/exploregardeners'>Explore Gargeners</NavLink></li>
         <li className='pe-2'><NavLink to='/sharetips'>Share Tips</NavLink></li>
+        <li className='pe-2'><NavLink to='/dashboard'>Dashboard</NavLink></li>
     </>
 
     const handleLogOut = () => {

@@ -46,6 +46,11 @@ const Login = () => {
 
     const handleLoginWithGooglePopUp = () => {
         loginWithGooglePopUp()
+            .then(res => {
+                if (res.user) {
+                    navigate('/')
+                }
+            })
     }
 
 

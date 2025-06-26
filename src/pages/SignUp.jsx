@@ -1,11 +1,12 @@
 import { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
 
 const SignUp = () => {
     const { signInWithGooglePopUp } = use(AuthContext);
     const { createUser } = use(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignIn = e => {
         e.preventDefault();
@@ -34,6 +35,7 @@ const SignUp = () => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
+                                navigate('/');
                             }
                         })
                 }
@@ -45,6 +47,11 @@ const SignUp = () => {
 
     const handleSignInWithGooglePopUp = () => {
         signInWithGooglePopUp()
+            .then(res => {
+                if (res.user) {
+                navigate('/')
+            }})
+        
     }
 
     return (
