@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 
 const getData = async () => {
     try {
-        const res = await axios.get('http://localhost:3000/users');
+        const res = await axios.get('https://leafano-server.vercel.app/users');
         return res.data;
     } catch (err) {
         console.error('Failed to fetch users:', err);
@@ -22,16 +22,16 @@ const UserDetails = () => {
     const matchedUser = initUser.find(int => int._id === id);
     // console.log(matchedUser);
 
-    
-        useEffect(() => {
-            const fetchUsers = async () => {
-                const initUserData = await getData();
-                setInitUser(initUserData);
-                // console.log(initUserData);
-            };
-    
-            fetchUsers();
-        }, []);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const initUserData = await getData();
+            setInitUser(initUserData);
+            // console.log(initUserData);
+        };
+
+        fetchUsers();
+    }, []);
 
 
 
@@ -47,7 +47,7 @@ const UserDetails = () => {
                         <img className='w-42 absolute rounded-full' src={matchedUser?.profilePhoto} alt="" />
                         <div className='ps-52'>
                             <h1 className='text-2xl font-semibold'>{matchedUser?.name}</h1>
-                            
+
                         </div>
                     </div>
                     <div className='mt-20 border-green-500 border-2 rounded-sm grid lg:grid-cols-2 gap-4 px-2 py-1 lg:mx-0 mx-4'>

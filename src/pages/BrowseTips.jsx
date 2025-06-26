@@ -9,7 +9,7 @@ const BrowseTips = () => {
     const [selectedDifficulty, setSelectedDifficulty] = useState('');
     const [isAscending, setIsAscending] = useState(false);
     const [sortByDifficulty, setSortByDifficulty] = useState(false);
-    
+
 
 
     const limit = 6;
@@ -25,11 +25,11 @@ const BrowseTips = () => {
     const fetchTips = (currentSkip, isNewFilter = false) => {
         setLoading(true);
 
-        const url = `http://localhost:3000/gardenersTips?limit=${limit}&skip=${currentSkip}`
+        const url = `https://leafano-server.vercel.app/gardenersTips?limit=${limit}&skip=${currentSkip}`
             + (selectedDifficulty ? `&difficulty=${selectedDifficulty}` : '')
             + (isAscending ? `&sort=asc` : '')
             + (sortByDifficulty ? `&sortByDifficulty=true` : '');
-    
+
 
         fetch(url)
             .then(res => res.json())
@@ -67,7 +67,7 @@ const BrowseTips = () => {
             setSelectedDifficulty(difficulty);
         }
     };
-    
+
 
     const handleSeeAll = () => {
         if (!allLoaded && !loading) {
@@ -76,12 +76,15 @@ const BrowseTips = () => {
     };
 
     const handleAscending = () => {
-        setIsAscending(true);
-        setSortByDifficulty(false); // turn off difficulty sorting
+        setTips([]);            // Clear current tips
+        setSkip(0);             // Reset skip
+        setAllLoaded(false);    // Reset allLoaded flag
         setSelectedDifficulty('');
-        setTips([]);
-        fetchTips(0, true); // fresh fetch
-    };    
+        setSortByDifficulty(false);
+        setIsAscending(prev => !prev);  // Now toggle
+    };
+
+
 
     return (
         <div className='container mx-auto my-10'>

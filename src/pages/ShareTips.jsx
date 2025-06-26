@@ -9,7 +9,7 @@ const ShareTips = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://leafano-server.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => setGardeners(data));
     }, []);
@@ -22,7 +22,7 @@ const ShareTips = () => {
         const formData = new FormData(form);
         const tip = Object.fromEntries(formData.entries());
 
-        fetch('http://localhost:3000/gardenersTips', {
+        fetch('https://leafano-server.vercel.app/gardenersTips', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(tip),

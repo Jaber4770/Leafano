@@ -8,7 +8,7 @@ const UpdateTip = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data))
             .catch(err => console.error("Failed to load tip details:", err));
@@ -21,7 +21,7 @@ const UpdateTip = () => {
         const formData = new FormData(e.target);
         const updateTip = Object.fromEntries(formData.entries());
 
-        fetch(`http://localhost:3000/gardenersTips/${id}`, {
+        fetch(`https://leafano-server.vercel.app/gardenersTips/${id}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateTip)

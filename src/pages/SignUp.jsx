@@ -20,7 +20,7 @@ const SignUp = () => {
             .then(userCredential => {
                 (userCredential.user);
                 if (userCredential.user) {
-                    fetch('http://localhost:3000/gardeners', {
+                    fetch('https://leafano-server.vercel.app/gardeners', {
                         method: "POST",
                         headers: { 'content-type': "application/json" },
                         body: JSON.stringify(userProfile)
@@ -49,9 +49,10 @@ const SignUp = () => {
         signInWithGooglePopUp()
             .then(res => {
                 if (res.user) {
-                navigate('/')
-            }})
-        
+                    navigate('/')
+                }
+            })
+
     }
 
     return (

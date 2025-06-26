@@ -9,7 +9,7 @@ const GardenerDetails = () => {
     const [mytips, setMytips] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://leafano-server.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => setGardeners(data))
     }, [])
@@ -17,7 +17,7 @@ const GardenerDetails = () => {
     const matchedGardener = gardeners.find(gardener => gardener._id == id);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/gardenersTips?email=${user.email}`)
+        fetch(`https://leafano-server.vercel.app/gardenersTips?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 (data);

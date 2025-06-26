@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Slide } from 'react-awesome-reveal';
+import DonationSection from '../components/DonationSection';
 import FAQ from '../components/FAQ';
 import FeaturedGardeners from '../components/FeaturedGardeners';
 import GardeningHelp from '../components/GardeningHelp';
+import NewsletterSection from '../components/NewsletterSection';
 import Slider from '../components/Slider';
 import TrendingTips from '../components/TrendingTips';
-import DonationSection from '../components/DonationSection';
-import NewsletterSection from '../components/NewsletterSection';
 
 const getData = async () => {
     try {
-        const res = await axios.get('http://localhost:3000/users');
+        const res = await axios.get('https://leafano-server.vercel.app/users');
         return res.data;
     } catch (err) {
         console.error('Failed to fetch users:', err);
@@ -34,7 +34,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(result => {
                 setTips(result);

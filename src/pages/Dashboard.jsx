@@ -78,15 +78,37 @@ const Dashboard = () => {
                     ))}
                 </div>
 
-                {/* Replace chart with something lighter */}
+                {/* Dashboard Summary Cards */}
                 <Card className="shadow-md rounded-2xl">
                     <CardContent className="p-6">
                         <h3 className="text-xl font-semibold mb-2">🌿 Top Contributor</h3>
-                        <p className="text-gray-700">Most active user this month: <strong>Maria Gardenia</strong> 🌱 with 23 tips shared!</p>
+                        <p className="text-gray-700">
+                            This month, <strong>Maria Gardenia</strong> has been our most active contributor with <strong>23 gardening tips</strong> shared.
+                            Thank you for helping our community grow!
+                        </p>
                     </CardContent>
                 </Card>
 
-                
+                <Card className="shadow-md rounded-2xl mt-6">
+                    <CardContent className="p-6">
+                        <h3 className="text-xl font-semibold mb-2">📅 Upcoming Event</h3>
+                        <p className="text-gray-700">
+                            Don’t miss our <strong>Spring Gardening Workshop</strong> happening on <strong>July 15th</strong>.
+                            A perfect opportunity for members to learn and connect with fellow gardening enthusiasts.
+                        </p>
+                    </CardContent>
+                </Card>
+
+                <Card className="shadow-md rounded-2xl mt-6">
+                    <CardContent className="p-6">
+                        <h3 className="text-xl font-semibold mb-2">💖 Donations Received</h3>
+                        <p className="text-gray-700">
+                            We’re grateful to announce that our community has raised <strong>$5,400</strong> in donations this quarter.
+                            These funds help us improve resources and organize more events.
+                        </p>
+                    </CardContent>
+                </Card>
+
             </main>
         </div>
     );

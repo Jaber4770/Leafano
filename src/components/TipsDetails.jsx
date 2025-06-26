@@ -9,7 +9,7 @@ const TipsDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:3000/gardenersTips')
+        fetch('https://leafano-server.vercel.app/gardenersTips')
             .then(res => res.json())
             .then(data => setTipsDetails(data))
     }, [])
@@ -27,7 +27,7 @@ const TipsDetails = () => {
         const newLikeCount = like + 1;
         setLike(newLikeCount);
 
-        fetch(`http://localhost:3000/gardenersTips/${id}`, {
+        fetch(`https://leafano-server.vercel.app/gardenersTips/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ like: newLikeCount })
